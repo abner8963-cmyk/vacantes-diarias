@@ -1,6 +1,6 @@
 {
   "fecha": "2026-11-18",
-  "generado": "2026-11-18T21:19:35-06:00",
+  "generado": "2026-11-18T21:33:00-06:00",
   "pais": "mx",
   "publicadas": "3days",
   "consultas": [
@@ -57,28 +57,413 @@
       "encontradas": 0,
       "en_zona_o_remotas": 0,
       "nuevas": 0
+    },
+    {
+      "consulta": "analista presupuestal",
+      "encontradas": 1,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "analista financiero jr",
+      "encontradas": 3,
+      "en_zona_o_remotas": 1,
+      "nuevas": 1
+    },
+    {
+      "consulta": "auxiliar contable",
+      "encontradas": 10,
+      "en_zona_o_remotas": 7,
+      "nuevas": 7
+    },
+    {
+      "consulta": "analista contable jr",
+      "encontradas": 6,
+      "en_zona_o_remotas": 5,
+      "nuevas": 5
+    },
+    {
+      "consulta": "control presupuestal",
+      "encontradas": 2,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "finanzas públicas",
+      "encontradas": 1,
+      "en_zona_o_remotas": 1,
+      "nuevas": 1
+    },
+    {
+      "consulta": "analista de datos financieros",
+      "encontradas": 3,
+      "en_zona_o_remotas": 3,
+      "nuevas": 3
+    },
+    {
+      "consulta": "recién egresado finanzas",
+      "encontradas": 0,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "contabilidad gubernamental",
+      "encontradas": 0,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
     }
   ],
-  "total": 0,
-  "por_portal": {},
-  "descartadas_por_ubicacion": {
-    "México     •  a través de Glassdoor": 5,
-    "México     •  a través de LinkedIn": 3,
-    "Monterrey, N.L.     •  a través de Trabajo.org": 2,
-    "Zacatecas, Zac.     •  a través de SimplyHired": 2,
-    "México     •  a través de Jobrapido.com": 2,
-    "México     •  a través de Trabajo.org": 2,
-    "San Luis Potosí, S.L.P.     •  a través de LinkedIn": 1,
-    "Zacatecas, Zac.     •  a través de Indeed": 1,
-    "México  (y 1 ubicación más)      •  a través de Jobrapido.com": 1,
-    "México     •  a través de Recruit.net": 1,
-    "México     •  a través de WhatJobs": 1,
-    "México     •  a través de Jooble": 1,
-    "México     •  a través de Expertini": 1,
-    "México     •  a través de Jobs.ok.com": 1,
-    "San Luis Potosí, S.L.P.     •  a través de Computrabajo": 1,
-    "Tepatitlán de Morelos, Jal.     •  a través de BeBee": 1,
-    "México     •  a través de Xico Jobs Expertini": 1
+  "total": 17,
+  "sin_especificar": 17,
+  "por_portal": {
+    "Glassdoor": 5,
+    "Jobrapido.com": 2,
+    "LinkedIn": 2,
+    "Trabajo.org": 2,
+    "Expertini": 1,
+    "Jobs.ok.com": 1,
+    "Jooble": 1,
+    "Recruit.net": 1,
+    "WhatJobs": 1,
+    "Xico Jobs Expertini": 1
   },
-  "vacantes": []
+  "descartadas": 8,
+  "descartadas_por_ubicacion": {
+    "Zacatecas, Zac.": 4,
+    "Monterrey, N.L.": 1,
+    "San Francisco del Refugio, Jal.": 1,
+    "San Luis Potosí, S.L.P.": 1,
+    "Tepatitlán de Morelos, Jal.": 1
+  },
+  "descartadas_detalle": [
+    {
+      "puesto": "Analista de Control Presupuestal",
+      "empresa": "Talisis",
+      "ubicacion": "Monterrey, N.L.",
+      "ciudad": null,
+      "estado": null,
+      "pais": null,
+      "portal": "Trabajo.org"
+    },
+    {
+      "puesto": "Analista Contable y Financiero Jr. Presencial",
+      "empresa": "The Big Jobsite",
+      "ubicacion": "San Francisco del Refugio, Jal.",
+      "ciudad": null,
+      "estado": null,
+      "pais": null,
+      "portal": "WhatJobs"
+    },
+    {
+      "puesto": "Contador JR.",
+      "empresa": "Armando Vázquez y Cia",
+      "ubicacion": "San Luis Potosí, S.L.P.",
+      "ciudad": null,
+      "estado": null,
+      "pais": null,
+      "portal": "LinkedIn"
+    },
+    {
+      "puesto": "Auxiliar en contabilidad",
+      "empresa": "Tercer Autorizado",
+      "ubicacion": "Zacatecas, Zac.",
+      "ciudad": "Zacatecas",
+      "estado": "Zacatecas",
+      "pais": "MX",
+      "portal": "Indeed"
+    },
+    {
+      "puesto": "Auxiliar de facturación - experiencia portales retail",
+      "empresa": "BCAD Technology",
+      "ubicacion": "Zacatecas, Zac.",
+      "ciudad": "Zacatecas",
+      "estado": "Zacatecas",
+      "pais": "MX",
+      "portal": "SimplyHired"
+    },
+    {
+      "puesto": "Auxiliar de nóminas",
+      "empresa": "Braun Huerin SC",
+      "ubicacion": "Zacatecas, Zac.",
+      "ciudad": "Zacatecas",
+      "estado": "Zacatecas",
+      "pais": "MX",
+      "portal": "Indeed"
+    },
+    {
+      "puesto": "Contador Junior",
+      "empresa": "Distribuidora Moldemania",
+      "ubicacion": "Zacatecas, Zac.",
+      "ciudad": "Zacatecas",
+      "estado": "Zacatecas",
+      "pais": "MX",
+      "portal": "SimplyHired"
+    },
+    {
+      "puesto": "Jefe de Analisis y Control Operativo",
+      "empresa": "AGROVISION MEXICO",
+      "ubicacion": "Tepatitlán de Morelos, Jal.",
+      "ciudad": null,
+      "estado": null,
+      "pais": null,
+      "portal": "BeBee"
+    }
+  ],
+  "vacantes": [
+    {
+      "puesto": "Analista de Planeación Financiera JR",
+      "empresa": "Grupo Herdez",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 11 horas",
+      "portal": "LinkedIn",
+      "liga": "https://mx.linkedin.com/jobs/view/analista-de-planeaci%C3%B3n-financiera-jr-at-grupo-herdez-4491871012",
+      "extracto": "Únete a esta gran familia Herdez Los mejores resultados se logran con talentos como el tuyo Estamos solicitando “Analista de Planeación Financiera” Escolaridad: Licenciatura en Finanzas, Contaduría o afín. INGLES AVANZADO Experiencia: 2 años de experiencia en empresas de consumo…",
+      "busquedas": [
+        "analista financiero jr"
+      ]
+    },
+    {
+      "puesto": "Auxiliar contable Jr Titulado para RRHH zona Atotonilco de Tula Quma.",
+      "empresa": "EXPERTISE",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 1 día",
+      "portal": "Glassdoor",
+      "liga": "https://www.glassdoor.com.mx/job-listing/jv?jl=1010329426448",
+      "extracto": "¡ESTAMOS CONTRATANDO! CONTADOR TITULADO PARA RECURSOS HUMANOS Buscamos un Auxiliar contable//administrativo con poca experiencia en los diferentes procesos del área, responsable de gestionar el onboarding, desde el reclutamiento y selección hasta la contratación, capacitación y…",
+      "busquedas": [
+        "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "Auxiliar Contable (IMSS, SIROC y REPSE)",
+      "empresa": "WISE GROUP",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Glassdoor",
+      "liga": "https://www.glassdoor.com.mx/job-listing/jv?jl=1010328888628",
+      "extracto": "Ubicación: Miravalle, Monterrey, N.L. Sueldo: $13,000 – $15,000 MXN libres mensuales Horario: Lunes a viernes, 9:00 am a 6:00 pm Tipo de empleo: Tiempo completo, presencial Buscamos a una persona con muchas ganas de aprender para unirse a nuestro equipo de Compliance. Trabajará…",
+      "busquedas": [
+        "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "Auxiliar Contable Con Proyección Y Crecimiento",
+      "empresa": "Barnav Consultores Sc",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Jobrapido.com",
+      "liga": "https://mx.jobrapido.com/jobpreview/660098300799614976",
+      "extracto": "Barnav Consultores Sc busca un Auxiliar Contable y Administrativo para apoyar la gestión administrativa y contable de la sucursal. Elaborar reportes, capturar información y revisar facturas, manteniendo archivos y control de documentos.Se busca experiencia en tesorería, caja y…",
+      "busquedas": [
+        "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "Auxiliar Contable-Administrativo | TRANSPORTE | Manzanillo Col",
+      "empresa": "Grupo Cerra Campa SA de CV",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Glassdoor",
+      "liga": "https://www.glassdoor.com.mx/job-listing/jv?jl=1010328642978",
+      "extracto": "Funciones principales • Actividades principales • Recepción y validación de documentos de operadores • Validación de evidencias de entrega de guías a clientes • Manejo y control de efectivo • Liquidación y cuenta de rutas de repartoEntrega de gastos y viáticos a operadores •…",
+      "busquedas": [
+        "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "Auxiliar de Contabilidad",
+      "empresa": "El Puerto de Liverpool",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 10 horas",
+      "portal": "LinkedIn",
+      "liga": "https://mx.linkedin.com/jobs/view/auxiliar-de-contabilidad-at-el-puerto-de-liverpool-4484266117",
+      "extracto": "Descripción Empresa El Puerto de Liverpool es la empresa líder en tiendas departamentales en México. CON MÁS DE 175 AÑOS EN EL MERCADO, nos dedicamos a facilitar la selección de productos y brindarles el mejor servicio a las familias mexicanas, esperando superar las expectativas…",
+      "busquedas": [
+        "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "Auxiliar Contable: Inicio de Carrera Presencial con Beneficios",
+      "empresa": "Conectalent",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Recruit.net",
+      "liga": "https://www.recruit.net/job/auxiliar-contable-inicio-de-carrera-jobs/D97F872EB28528BB",
+      "extracto": "Conectalent in Naucalpan, State of Mexico is seeking a motivated General Accounting Assistant to support the finance team with daily accounting tasks. This on-site role focuses on accurate data entry, bank reconciliation support, and preparation of basic financial reports in a…",
+      "busquedas": [
+        "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "Contador Y/o Auxiliar Contable",
+      "empresa": "CCP Consultoria Contable Profesional",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "WhatJobs",
+      "liga": "https://es-mx.whatjobs.com/jobs/contador-y---o-auxiliar-contable/los-volcanes-distrito-federal?id=259561941",
+      "extracto": "Contador y/o auxiliar de contador Experiência mínima de un año en el puesto Conocimientos amplios en contabilidad Manejos de DIOT y contabilidad electronica Manejo en Contpaq y NOI Manejo de plataformas como SAT, IDSE, FONACOT, IMSS, SUA, FINANZAS Manejo de paqueteria OFFICE…",
+      "busquedas": [
+        "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "ANALISTA CONTABLE - PAGO SEMANAL",
+      "empresa": "ECOLOMOVIL",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Glassdoor",
+      "liga": "https://www.glassdoor.com.mx/job-listing/jv?jl=1010329125166",
+      "extracto": "¡ÚNETE A ECOLÓMOVIL! | ANALISTA DE COSTOS En Ecolomóvil trabajamos por un manejo responsable de los residuos y el cuidado del medio ambiente. Somos una empresa en crecimiento y buscamos talento que quiera desarrollarse profesionalmente y formar parte de un equipo estable. ZONA…",
+      "busquedas": [
+        "analista contable jr"
+      ]
+    },
+    {
+      "puesto": "Becario Jr. Contable Recien Egresado",
+      "empresa": "Aarco",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Trabajo.org",
+      "liga": "https://mx.trabajo.org/oferta-5304-6a7b23397b5ff6b0a3a919d017fba7b1",
+      "extracto": "Analista Contable Senior - Especialista en Impuestos Corporativos (Remoto) Nuestro cliente, una firma de consultoría financiera de primer nivel con una presencia global, está buscando un Analista Contable Senior con especialización en Impuestos Corporativos para unirse a su…",
+      "busquedas": [
+        "analista contable jr"
+      ]
+    },
+    {
+      "puesto": "Analista Administrativo JR Crecimiento y Buen Ambiente",
+      "empresa": "Atlas-Expeditors,-Sa-De-Cv",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Expertini",
+      "liga": "https://mxico.mx.expertini.com/job/analista-administrativo-jr-crecimiento-y-buen-ambiente-mexico-atlas-expeditors-sa-de-cv-74-5761477/",
+      "extracto": "KROM LOGÍSTICA está buscando un Analista de Información Administrativa Jr. para apoyar áreas de contabilidad, administración y finanzas. Se requiere licenciatura en Contaduría Pública/Administración y Finanzas y al menos 2 años de experiencia. Entre sus funciones estarán la…",
+      "busquedas": [
+        "analista contable jr"
+      ]
+    },
+    {
+      "puesto": "Contador Junior — Medio Tiempo, Presencial y Seguro Médico",
+      "empresa": "PVR Online",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Jooble",
+      "liga": "https://mx.jooble.org/jdp/-7445927038399004535",
+      "extracto": "PVR Online, con un ambiente de trabajo dinámico e inclusivo, busca Contadores recién egresados o estudiantes en últimos semestres para apoyar tareas contables y administrativas para distintos clientes, en una vacante presencial en Centrocity. Se ofrece ingreso mensual de 8,480…",
+      "busquedas": [
+        "analista contable jr"
+      ]
+    },
+    {
+      "puesto": "Analista Contable Jr. – Sector Seguro",
+      "empresa": "AARCO",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Jobs.ok.com",
+      "liga": "https://jobs.ok.com/mx/es/pharmacy-jobs/analista-contable-jr-sector-seguro-5e3f6753/",
+      "extracto": "**AUXILIAR CONTABLE** **SECTOR SEGUROS.** **Requisitos:** Licenciatura concluida en Contabilidad o Administración. Experiencia en sector seguros Realizar cuadros comparativos Manejo de SAE **Funciones:** Conocimiento cobranza y control de saldos Realizar cuadros comparativos…",
+      "busquedas": [
+        "analista contable jr"
+      ]
+    },
+    {
+      "puesto": "Director de Finanzas y Estrategia Corporativa",
+      "empresa": "ConTacto + Humano",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Jobrapido.com",
+      "liga": "https://mx.jobrapido.com/jobpreview/3284484122231177216",
+      "extracto": "ConTacto + Humano busca un Director/a Financiero/a para dirigir la gestión financiera integral de la empresa. Será responsable de presupuesto, contabilidad, tesorería y control de costos, asegurando información confiable para la Dirección y el Consejo. Se requiere 8–10 años en…",
+      "busquedas": [
+        "finanzas públicas"
+      ]
+    },
+    {
+      "puesto": "Banamex Analista De Reportes Financieros",
+      "empresa": "09522 Afore Banamex S.A. De C.V. Integrante Del Grupo Financiero Banamex",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Xico Jobs Expertini",
+      "liga": "https://xico.mx.expertini.com/job/banamex-analista-de-reportes-financieros-xico-09522-afore-banamex-sa-de-cv-integrante-del-grupo-financiero-banamex-5362-3502382/",
+      "extracto": "The Finance Reporting Analyst 2 is an intermediate level position responsible for the generation, tracking and submission of financial reports in coordination with the Finance Team. The overall objective of this role is to accurately prepare and report business/financial…",
+      "busquedas": [
+        "analista de datos financieros"
+      ]
+    },
+    {
+      "puesto": "ANALISTA DE FACTORES DE RIESGO",
+      "empresa": "Grupo BMV",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Glassdoor",
+      "liga": "https://www.glassdoor.com.mx/job-listing/jv?jl=1010329008803",
+      "extracto": "Fecha: 17 nov 2026 Ubicación: Alvaro Obregón, Ciudad de México, México , 06500 Empresa: Corporativo Mexicano del Mercado de Valores Se parte de una de las empresas más emblemáticas de México. Estamos comprometidos con el desarrollo y crecimiento de nuestros colaboradores.…",
+      "busquedas": [
+        "analista de datos financieros"
+      ]
+    },
+    {
+      "puesto": "Analista Sr. Finanzas Y Planeación Estratégica",
+      "empresa": "You Matter",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 3 días",
+      "portal": "Trabajo.org",
+      "liga": "https://mx.trabajo.org/oferta-989-f744980322233e36eb6a4359e7c49e9d",
+      "extracto": "You Matter.mx es la empresa líder en suplementos alimenticios en México, y hoy queremos invitarte a formar parte de nuestra #You Matter Family. Nuestra misión es transformar la salud y el bienestar de las personas a través de productos de la más alta calidad, desarrollados con…",
+      "busquedas": [
+        "analista de datos financieros"
+      ]
+    }
+  ]
 }
