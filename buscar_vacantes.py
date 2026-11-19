@@ -261,6 +261,16 @@ def liga_limpia(url):
     return urllib.parse.urlunsplit((p.scheme, p.netloc.lower(), p.path.rstrip("/"), urllib.parse.urlencode(q), ""))
 
 
+def nombre_portal(publisher):
+    """JSearch (Google for Jobs) también trae vacantes de Computrabajo y OCC; se les pone un nombre fijo."""
+    n = norm(publisher)
+    if "computrabajo" in n:
+        return "Computrabajo"
+    if re.search(r"\bocc\b|occmundial", n):
+        return "OCC"
+    return publisher
+
+
 def convertir(job, consulta):
     remoto = es_remoto(job)
     estado = zona(job)
@@ -276,7 +286,7 @@ def convertir(job, consulta):
         "modalidad": "remoto" if remoto else "no remoto",
         "sueldo": sueldo(job),
         "fecha_publicacion": fecha_publicacion(job),
-        "portal": job.get("job_publisher"),
+        "portal": nombre_portal(job.get("job_publisher")),
         "liga": job.get("job_apply_link"),
         "extracto": extracto(job.get("job_description")),
         "busquedas": [consulta],
@@ -553,6 +563,8 @@ def main():
         detalle.append({"consulta": consulta, "encontradas": len(trabajos), "en_zona_o_remotas": en_zona, "nuevas": nuevas})
         print(f"[{consulta}] {len(trabajos)} encontradas, {en_zona} en la zona, remotas o sin especificar, {nuevas} nuevas")
         time.sleep(1)
+    if clave and (any("error" not in d for d in detalle) or disponibles == 0):
+        uso["ultima_corrida_ok"] = dia  # la corrida de respaldo (5:40) lo lee y ya no consulta
     guardar_uso(uso)
 
     # ---- Portal del Empleo: si falla, queda en «errores» y el resto sigue ----

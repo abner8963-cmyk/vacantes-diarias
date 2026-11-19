@@ -2,7 +2,11 @@ name: Buscar vacantes
 
 on:
   schedule:
-    - cron: "0 12 * * 1-5"   # lunes a viernes, 12:00 UTC = 6:00 a.m. en Ciudad de México
+    # Lunes a viernes. México ya no cambia de horario: CDMX = UTC−6 todo el año.
+    # GitHub a veces retrasa o se salta los horarios programados (sobre todo en punto),
+    # por eso hay un segundo horario de respaldo; si el primero ya salió bien, el segundo termina sin consultar.
+    - cron: "0 11 * * 1-5"    # 11:00 UTC = 5:00 a.m. en Ciudad de México
+    - cron: "40 11 * * 1-5"   # 11:40 UTC = 5:40 a.m., respaldo
   workflow_dispatch:          # botón «Run workflow» para ejecutarlo a mano
     inputs:
       ignorar_limite_dia:
@@ -24,25 +28,43 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Si la corrida de las 5:00 terminó mientras esta esperaba turno, trae su uso.json.
+      - name: Traer los últimos resultados
+        run: git pull --ff-only --quiet
+
+      - name: ¿Ya corrió hoy con éxito?
+        id: ya
+        if: github.event_name == 'schedule'
+        run: |
+          hoy=$(TZ=America/Mexico_City date +%F)
+          ok=$(python3 -c "import json; print(json.load(open('uso.json')).get('ultima_corrida_ok', ''))" 2>/dev/null || true)
+          if [ "$ok" = "$hoy" ]; then
+            echo "salir=true" >> "$GITHUB_OUTPUT"
+            echo "Ya hubo una corrida exitosa hoy ($hoy): esta corrida de respaldo termina sin gastar consultas de JSearch." | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.ya.outputs.salir != 'true'
         with:
           python-version: "3.12"
 
       # Para el Portal del Empleo. Si esto falla, el script lo anota en «errores» y sigue con JSearch.
       - name: Instalar Playwright (Chromium headless)
+        if: steps.ya.outputs.salir != 'true'
         continue-on-error: true
         run: |
           pip install --quiet playwright==1.65.2
           python -m playwright install --with-deps --only-shell chromium
 
       - name: Buscar vacantes
+        if: steps.ya.outputs.salir != 'true'
         env:
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           IGNORAR_LIMITE_DIA: ${{ inputs.ignorar_limite_dia }}
         run: python buscar_vacantes.py
 
       - name: Guardar resultados y contador
-        if: always()   # el contador se guarda aunque la búsqueda falle
+        if: always() && steps.ya.outputs.salir != 'true'   # el contador se guarda aunque la búsqueda falle
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

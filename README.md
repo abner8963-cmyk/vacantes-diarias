@@ -4,7 +4,8 @@ Busca vacantes de finanzas, contabilidad y presupuesto en México en dos fuentes
 están en Ciudad de México, Estado de México, Hidalgo, Tlaxcala, Puebla, son remotas o no dicen dónde:
 
 1. La API [JSearch de OpenWeb Ninja](https://www.openwebninja.com/api/jsearch), que lee Google for Jobs
-   (LinkedIn, Indeed, Glassdoor, OCC, Computrabajo, etc.).
+   (LinkedIn, Indeed, Glassdoor, OCC, Computrabajo, etc.). Las que vienen de Computrabajo y OCC Mundial
+   se guardan con `portal` = «Computrabajo» y «OCC».
 2. El [Portal del Empleo](https://www.empleo.gob.mx) de la STPS (`portal` = «Portal del Empleo»).
 
 ## Filtro de ubicación
@@ -19,8 +20,11 @@ están en Ciudad de México, Estado de México, Hidalgo, Tlaxcala, Puebla, son r
 - Si solo dice «México» o no trae ciudad, no se descarta: queda con `ubicacion` y `estado`
   «sin especificar» para decidir a mano.
 
-Corre sola en GitHub Actions de lunes a viernes a las 6:00 a.m. (hora de Ciudad de México) y
-también se puede ejecutar a mano desde **Actions › Buscar vacantes › Run workflow**.
+Corre sola en GitHub Actions de lunes a viernes a las 5:00 a.m. (hora de Ciudad de México, 11:00 UTC),
+con un segundo horario de respaldo a las 5:40 a.m. (11:40 UTC), porque GitHub a veces retrasa o se
+salta los horarios programados. Si la primera corrida ya salió bien (`ultima_corrida_ok` en `uso.json`
+tiene la fecha de hoy), la de respaldo termina sin consultar nada. También se puede ejecutar a mano
+desde **Actions › Buscar vacantes › Run workflow**.
 
 ## Resultados
 
@@ -58,6 +62,19 @@ recién egresado finanzas · contabilidad gubernamental.
   corrida sigue con JSearch.
 - Términos de uso: [empleo.gob.mx/politicas](https://www.empleo.gob.mx/politicas) (uso personal y no
   comercial, para buscar empleo). El sitio no tiene `robots.txt`.
+
+## Computrabajo y OCC Mundial: sin búsqueda directa
+
+Se revisaron el 2026-11-19 y no se consultan directamente:
+
+- **Computrabajo** (mx.computrabajo.com) responde 403 a cualquier cliente automatizado, incluido su
+  propio `robots.txt`, y su aviso legal (versión de Argentina, misma empresa) prohíbe usar scripts y
+  crawlers en el sitio.
+- **OCC Mundial** (occ.com.mx) pone el reto anti-bots de Cloudflare a los navegadores automatizados y
+  su API (`/rest?server=jobs`, la que su `robots.txt` permite) pide autorización (401).
+
+Saltarse esos bloqueos sería evadir su protección contra bots, así que sus vacantes solo llegan por
+JSearch (Google for Jobs).
 
 ## Límites
 
