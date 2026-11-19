@@ -28,6 +28,13 @@ jobs:
         with:
           python-version: "3.12"
 
+      # Para el Portal del Empleo. Si esto falla, el script lo anota en «errores» y sigue con JSearch.
+      - name: Instalar Playwright (Chromium headless)
+        continue-on-error: true
+        run: |
+          pip install --quiet playwright==1.65.2
+          python -m playwright install --with-deps --only-shell chromium
+
       - name: Buscar vacantes
         env:
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}

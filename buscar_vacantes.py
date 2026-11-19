@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Busca vacantes en JSearch (OpenWeb Ninja) y guarda las de la zona centro de México o remotas.
+"""Busca vacantes en JSearch (OpenWeb Ninja) y en el Portal del Empleo (STPS) y guarda las de la zona centro o remotas.
 
 Documentación de la API: https://www.openwebninja.com/api/jsearch
 Especificación usada:   https://openwebninja.s3.us-east-1.amazonaws.com/portal/openapi/jsearch.yaml
   GET https://api.openwebninja.com/jsearch/search-v2, encabezado x-api-key.
   Cada página (hasta 10 vacantes) consume un crédito, por eso num_pages = 1.
 
-La clave se lee de la variable de entorno JSEARCH_API_KEY (secreto de GitHub). Solo usa la biblioteca estándar.
+La clave se lee de la variable de entorno JSEARCH_API_KEY (secreto de GitHub). JSearch solo usa la biblioteca
+estándar; el Portal del Empleo necesita Playwright (si falta, se registra en «errores» y se sigue).
 """
 import json
 import os
@@ -17,7 +18,7 @@ import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -289,8 +290,11 @@ class Deduplicador:
         self.lista, self.por_clave = [], {}
 
     def agregar(self, v):
-        claves = [k for k in ("pe:" + norm(v["puesto"]) + "|" + norm(v["empresa"]),
-                              "liga:" + liga_limpia(v["liga"])) if not k.endswith(":") and k != "pe:|"]
+        claves = []
+        if norm(v["puesto"]) and norm(v["empresa"]) not in ("", "confidencial", "empresa confidencial"):
+            claves.append("pe:" + norm(v["puesto"]) + "|" + norm(v["empresa"]))
+        if liga_limpia(v["liga"]):
+            claves.append("liga:" + liga_limpia(v["liga"]))
         previa = next((self.por_clave[k] for k in claves if k in self.por_clave), None)
         if previa is not None:
             for b in v["busquedas"]:
@@ -323,20 +327,172 @@ def resumen_portales(vacantes):
     return dict(sorted(conteo.items(), key=lambda x: (-x[1], x[0])))
 
 
+# ---------- Portal del Empleo (STPS) ----------
+# El buscador de la portada pide hCaptcha; no se usa. Las páginas públicas por estado
+# (www.empleo.gob.mx/vacantes/hidalgo) cargan sus vacantes de un endpoint JSON, ordenadas de la más
+# nueva a la más vieja. Ese endpoint rechaza (403) a los clientes que no son navegador, por eso se llama
+# desde Chromium headless (Playwright), sin cambiarle la identidad. Se pide con «que» vacío, igual que
+# esas páginas, y los términos se filtran aquí. Nunca se consulta la búsqueda de candidatos.
+# Términos de uso (empleo.gob.mx/politicas): uso personal y no comercial; al reproducir hay que citar
+# la dirección y la fecha de consulta (sección 10), por eso se guardan en «portal_empleo».
+PORTAL = "Portal del Empleo"
+PORTAL_URL = "https://www.empleo.gob.mx"
+PORTAL_API = "/api/Login/busqueda/empleos"
+PORTAL_ENTIDADES = [("9", "Ciudad de México"), ("15", "Estado de México"), ("13", "Hidalgo"),
+                    ("29", "Tlaxcala"), ("21", "Puebla")]
+PORTAL_TERMINOS = {  # término -> expresión sobre el título normalizado
+    "analista": r"\banalist",
+    "contable": r"\bcontables?\b",
+    "contabilidad": r"\bcontabilidad\b",
+    "finanzas": r"\bfinanzas\b",
+    "presupuesto": r"\bpresupuest",
+    "auxiliar administrativo": r"\baux(iliar|ilar)?( de)? administra(tiv|cion)",
+}
+PORTAL_MAX_PETICIONES = 30   # contando la carga de la página
+PORTAL_PAUSA = 2             # segundos entre peticiones
+PORTAL_POR_PAGINA = 50       # lo mismo que piden las páginas del portal
+PORTAL_DIAS = 3
+_PORTAL_FETCH = """async (cuerpo) => {
+  const r = await fetch('%s', {method: 'POST', body: JSON.stringify(cuerpo),
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json, text/plain, */*'}});
+  return {status: r.status, texto: await r.text()};
+}""" % PORTAL_API
+
+
+def portal_terminos(titulo):
+    t = norm(titulo)
+    return [termino for termino, patron in PORTAL_TERMINOS.items() if re.search(patron, t)]
+
+
+def portal_fecha(item):
+    f = str(item.get("fechaPublicacion") or "")[:10]  # «2026-11-18T00:00:00.000+00:00»: es la fecha, no la hora
+    return f if re.fullmatch(r"\d{4}-\d{2}-\d{2}", f) else SIN_ESPECIFICAR
+
+
+def portal_sueldo(item):
+    mn, mx = item.get("salarioOfrecido") or 0, item.get("salarioOfrecidoMaximo") or 0
+    if not mn and not mx:
+        return None
+    rango = f"${mn:,.0f} – ${mx:,.0f}" if mn and mx and mx > mn else f"${(mn or mx):,.0f}"
+    return rango + " al mes"
+
+
+def portal_liga(item):
+    titulo = urllib.parse.quote(str(item.get("tituloOferta") or "").strip().upper().replace(" ", "-"), safe="-()")
+    return f"{PORTAL_URL}/puesto-de-trabajo/vacante/{item['id']}-{titulo}"
+
+
+def portal_convertir(item, estado, terminos):
+    titulo = " ".join(str(item.get("tituloOferta") or "").split())
+    descripcion = str(item.get("descripcion") or "")
+    remoto = any(norm(p) in norm(titulo + " " + descripcion) for p in PALABRAS_REMOTO)
+    empresa = (item.get("nombreEmpresa") or "").strip() or ("Confidencial" if item.get("confidencial") else "")
+    municipio = (item.get("municipio") or item.get("ciudad") or "").strip()
+    return {
+        "puesto": titulo,
+        "empresa": empresa,
+        "ubicacion": ", ".join(x for x in (municipio, estado) if x),
+        "estado": estado,
+        "modalidad": "remoto" if remoto else "no remoto",
+        "sueldo": portal_sueldo(item),
+        "fecha_publicacion": portal_fecha(item),
+        "portal": PORTAL,
+        "liga": portal_liga(item),
+        "extracto": extracto(descripcion),
+        "busquedas": terminos,
+    }
+
+
+def buscar_portal_empleo(hoy, errores):
+    """Devuelve (vacantes, resumen). Nunca lanza excepciones: los problemas van a «errores»."""
+    corte = (hoy - timedelta(days=PORTAL_DIAS)).strftime("%Y-%m-%d")
+    resumen = {"url": PORTAL_URL, "consultado": hoy.isoformat(timespec="seconds"), "publicadas_desde": corte,
+               "terminos": list(PORTAL_TERMINOS), "peticiones": 0, "por_estado": []}
+    vacantes = []
+
+    def error(texto):
+        print(f"[{PORTAL}] {texto}")
+        errores.append({"fuente": PORTAL, "error": texto[:300]})
+
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        error("Playwright no está instalado; se omite el Portal del Empleo.")
+        return vacantes, resumen
+    estados = [{"entidad": e, "estado": n, "pagina": 0, "terminado": False,
+                "paginas": 0, "revisadas": 0, "recientes": 0, "coinciden": 0} for e, n in PORTAL_ENTIDADES]
+    try:
+        with sync_playwright() as pw:
+            navegador = pw.chromium.launch()
+            try:
+                pagina = navegador.new_page()
+                resumen["peticiones"] += 1
+                pagina.goto(PORTAL_URL + "/api/version", timeout=60000)  # página mínima del mismo sitio
+                bloqueado = False
+                while not bloqueado and resumen["peticiones"] < PORTAL_MAX_PETICIONES:
+                    pendientes = [e for e in estados if not e["terminado"]]
+                    if not pendientes:
+                        break
+                    for e in pendientes:  # por turnos, para que ningún estado se lleve todas las peticiones
+                        if resumen["peticiones"] >= PORTAL_MAX_PETICIONES:
+                            break
+                        time.sleep(PORTAL_PAUSA)
+                        resumen["peticiones"] += 1
+                        cuerpo = {"que": None, "donde": {"entidad": e["entidad"]}, "items": PORTAL_POR_PAGINA,
+                                  "page": e["pagina"], "orden": "fecha_publicacion desc", "filter": {}}
+                        try:
+                            r = pagina.evaluate(_PORTAL_FETCH, cuerpo)
+                        except Exception as ex:
+                            error(f"{e['estado']}, página {e['pagina'] + 1}: {ex}")
+                            e["terminado"] = True
+                            continue
+                        if r["status"] in (401, 403, 429):
+                            error(f"El portal rechazó la consulta (HTTP {r['status']}): {r['texto'][:120]}")
+                            bloqueado = True
+                            break
+                        try:
+                            datos = json.loads(r["texto"]) if r["status"] == 200 else None
+                            items = datos["content"]
+                            assert isinstance(items, list) and all("id" in i and "tituloOferta" in i for i in items)
+                        except Exception:
+                            error(f"{e['estado']}: respuesta inesperada (HTTP {r['status']}); el portal pudo cambiar. "
+                                  f"{str(r.get('texto'))[:120]}")
+                            e["terminado"] = True
+                            continue
+                        e["paginas"] += 1
+                        e["revisadas"] += len(items)
+                        fechas = []
+                        for item in items:
+                            fecha = portal_fecha(item)
+                            if fecha != SIN_ESPECIFICAR:
+                                fechas.append(fecha)
+                                if fecha < corte:
+                                    continue
+                            e["recientes"] += 1
+                            terminos = portal_terminos(item.get("tituloOferta"))
+                            if terminos:
+                                e["coinciden"] += 1
+                                vacantes.append(portal_convertir(item, e["estado"], terminos))
+                        e["pagina"] += 1
+                        if not items or datos.get("last", True) or (fechas and min(fechas) < corte):
+                            e["terminado"] = True
+            finally:
+                navegador.close()
+    except Exception as ex:  # el navegador no arrancó, la página no cargó, etc.
+        error(f"{type(ex).__name__}: {ex}")
+    for e in estados:
+        incompleto = not e["terminado"]
+        resumen["por_estado"].append({"estado": e["estado"], "paginas": e["paginas"], "revisadas": e["revisadas"],
+                                      "recientes": e["recientes"], "coinciden": e["coinciden"],
+                                      **({"incompleto": True} if incompleto and e["paginas"] else {})})
+    print(f"[{PORTAL}] {resumen['peticiones']} peticiones, {len(vacantes)} vacantes con los términos")
+    return vacantes, resumen
+
+
 def main():
     hoy = ahora()
     dia = hoy.strftime("%Y-%m-%d")
-    clave = os.environ.get("JSEARCH_API_KEY", "").strip()
-    if not clave:
-        print("Falta el secreto JSEARCH_API_KEY. Agrégalo en Settings > Secrets and variables > Actions.")
-        return 1
-
-    uso = leer_uso(hoy)
-    disponibles = quedan(uso)
-    if disponibles == 0:
-        print(f"Límite alcanzado: {uso['consultas_dia']}/{LIMITE_DIA} hoy y {uso['consultas_mes']}/{LIMITE_MES} este mes. No se consulta la API.")
-        guardar_uso(uso)
-        return 0
+    codigo, errores, detalle = 0, [], []
 
     dedup = Deduplicador()
     archivo_dia = CARPETA / f"{dia}.json"
@@ -356,7 +512,18 @@ def main():
         for d in previo.get("descartadas_detalle", []):
             descartar(d)
 
-    detalle, codigo = [], 0
+    # ---- JSearch ----
+    clave = os.environ.get("JSEARCH_API_KEY", "").strip()
+    uso = leer_uso(hoy)
+    disponibles = quedan(uso) if clave else 0
+    if not clave:
+        msg = "Falta el secreto JSEARCH_API_KEY. Agrégalo en Settings > Secrets and variables > Actions."
+        print(msg)
+        errores.append({"fuente": "JSearch", "error": msg})
+        codigo = 1
+    elif disponibles == 0:
+        print(f"JSearch: límite alcanzado ({uso['consultas_dia']}/{LIMITE_DIA} hoy, "
+              f"{uso['consultas_mes']}/{LIMITE_MES} este mes). No se consulta la API.")
     for consulta in CONSULTAS[:disponibles]:
         uso["consultas_dia"] += 1
         uso["consultas_mes"] += 1
@@ -367,11 +534,13 @@ def main():
         except ErrorClave as e:
             print(f"[{consulta}] {e}")
             detalle.append({"consulta": consulta, "error": str(e)[:200]})
+            errores.append({"fuente": "JSearch", "error": str(e)[:300]})
             codigo = 1
             break
         except Exception as e:  # red, tiempo de espera, JSON inválido
             print(f"[{consulta}] error: {e}")
             detalle.append({"consulta": consulta, "error": str(e)[:200]})
+            errores.append({"fuente": "JSearch", "error": f"{consulta}: {str(e)[:250]}"})
             continue
         en_zona = nuevas = 0
         for job in trabajos:
@@ -384,10 +553,20 @@ def main():
         detalle.append({"consulta": consulta, "encontradas": len(trabajos), "en_zona_o_remotas": en_zona, "nuevas": nuevas})
         print(f"[{consulta}] {len(trabajos)} encontradas, {en_zona} en la zona, remotas o sin especificar, {nuevas} nuevas")
         time.sleep(1)
+    guardar_uso(uso)
 
-    hechas = [d for d in detalle if "error" not in d]
-    if not detalle:
-        return codigo
+    # ---- Portal del Empleo: si falla, queda en «errores» y el resto sigue ----
+    try:
+        del_portal, resumen_portal = buscar_portal_empleo(hoy, errores)
+    except Exception as e:  # por si acaso; buscar_portal_empleo ya atrapa sus errores
+        errores.append({"fuente": PORTAL, "error": f"{type(e).__name__}: {str(e)[:250]}"})
+        del_portal, resumen_portal = [], {}
+    nuevas_portal = sum(dedup.agregar(v) for v in del_portal)
+    if resumen_portal:
+        resumen_portal["nuevas"] = nuevas_portal
+
+    jsearch_ok = any("error" not in d for d in detalle)
+    portal_ok = any(e.get("paginas") for e in resumen_portal.get("por_estado", []))
     vacantes = dedup.lista
     por_ubicacion = {}
     for d in descartadas:
@@ -400,6 +579,8 @@ def main():
         "pais": PAIS,
         "publicadas": PUBLICADAS,
         "consultas": previo.get("consultas", []) + detalle,
+        "portal_empleo": resumen_portal or previo.get("portal_empleo"),
+        "errores": errores,
         "total": len(vacantes),
         "sin_especificar": sin_especificar,
         "por_portal": resumen_portales(vacantes),
@@ -408,16 +589,20 @@ def main():
         "descartadas_detalle": descartadas,
         "vacantes": vacantes,
     }
-    if hechas:  # si todas fallaron, no se tocan los resultados anteriores
+    if jsearch_ok or portal_ok:  # si todo falló, no se tocan los resultados anteriores
         CARPETA.mkdir(exist_ok=True)
         texto = json.dumps(salida, ensure_ascii=False, indent=2) + "\n"
         archivo_dia.write_text(texto, encoding="utf-8")
         (CARPETA / "latest.json").write_text(texto, encoding="utf-8")
+    else:
+        print("Ninguna fuente respondió; no se modifican los resultados.")
 
     resumen = (f"## Vacantes del {dia}\n\n**{len(vacantes)}** vacantes en la zona, remotas o sin especificar "
                f"({sin_especificar} sin especificar) · {len(descartadas)} descartadas por ubicación · "
-               f"consultas: {uso['consultas_dia']}/{LIMITE_DIA} hoy, {uso['consultas_mes']}/{LIMITE_MES} este mes\n\n"
-               + "\n".join(f"- {p}: {n}" for p, n in salida["por_portal"].items()) + "\n")
+               f"consultas JSearch: {uso['consultas_dia']}/{LIMITE_DIA} hoy, {uso['consultas_mes']}/{LIMITE_MES} este mes · "
+               f"{PORTAL}: {nuevas_portal} nuevas en {resumen_portal.get('peticiones', 0)} peticiones\n\n"
+               + "\n".join(f"- {p}: {n}" for p, n in salida["por_portal"].items()) + "\n"
+               + "".join(f"\n> ⚠️ {e['fuente']}: {e['error']}" for e in errores) + "\n")
     print(resumen)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
