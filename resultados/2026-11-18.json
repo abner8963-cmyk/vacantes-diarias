@@ -1,0 +1,84 @@
+{
+  "fecha": "2026-11-18",
+  "generado": "2026-11-18T21:19:35-06:00",
+  "pais": "mx",
+  "publicadas": "3days",
+  "consultas": [
+    {
+      "consulta": "analista presupuestal",
+      "encontradas": 1,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "analista financiero jr",
+      "encontradas": 3,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "auxiliar contable",
+      "encontradas": 10,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "analista contable jr",
+      "encontradas": 6,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "control presupuestal",
+      "encontradas": 3,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "finanzas públicas",
+      "encontradas": 1,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "analista de datos financieros",
+      "encontradas": 3,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "recién egresado finanzas",
+      "encontradas": 0,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    },
+    {
+      "consulta": "contabilidad gubernamental",
+      "encontradas": 0,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
+    }
+  ],
+  "total": 0,
+  "por_portal": {},
+  "descartadas_por_ubicacion": {
+    "México     •  a través de Glassdoor": 5,
+    "México     •  a través de LinkedIn": 3,
+    "Monterrey, N.L.     •  a través de Trabajo.org": 2,
+    "Zacatecas, Zac.     •  a través de SimplyHired": 2,
+    "México     •  a través de Jobrapido.com": 2,
+    "México     •  a través de Trabajo.org": 2,
+    "San Luis Potosí, S.L.P.     •  a través de LinkedIn": 1,
+    "Zacatecas, Zac.     •  a través de Indeed": 1,
+    "México  (y 1 ubicación más)      •  a través de Jobrapido.com": 1,
+    "México     •  a través de Recruit.net": 1,
+    "México     •  a través de WhatJobs": 1,
+    "México     •  a través de Jooble": 1,
+    "México     •  a través de Expertini": 1,
+    "México     •  a través de Jobs.ok.com": 1,
+    "San Luis Potosí, S.L.P.     •  a través de Computrabajo": 1,
+    "Tepatitlán de Morelos, Jal.     •  a través de BeBee": 1,
+    "México     •  a través de Xico Jobs Expertini": 1
+  },
+  "vacantes": []
+}

@@ -1,0 +1,11 @@
+{
+  "mes": "2026-11",
+  "consultas_mes": 9,
+  "dia": "2026-11-18",
+  "consultas_dia": 9,
+  "limite_dia": 9,
+  "limite_mes": 190,
+  "historial": {
+    "2026-11-18": 9
+  }
+}
