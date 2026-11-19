@@ -146,10 +146,17 @@ def buscar(consulta, clave):
 
 
 # ---------- Filtros y formato ----------
+def lugar(job):
+    """Ubicación sin el agregado de la API: 'Pachuca de Soto, Hgo.  •  a través de LinkedIn' -> 'Pachuca de Soto, Hgo.'"""
+    t = str(job.get("job_location") or "").split("•")[0]
+    t = re.sub(r"\(y \d+ ubicaci[oó]n(es)? m[aá]s\)", "", t)
+    return " ".join(t.split()).strip(" ,")
+
+
 def es_remoto(job):
     if job.get("job_is_remote"):
         return True
-    texto = norm(" ".join(str(job.get(k) or "") for k in ("job_title", "job_location", "job_city")))
+    texto = norm(" ".join([str(job.get("job_title") or ""), lugar(job), str(job.get("job_city") or "")]))
     return any(norm(p) in texto for p in PALABRAS_REMOTO)
 
 
@@ -162,10 +169,14 @@ def zona(job):
     for nombre, ciudades in CIUDADES.items():
         if ciudad in ciudades:
             return nombre
-    partes = [norm(p) for p in str(job.get("job_location") or "").split(",") if norm(p)]
+    partes = [norm(p) for p in lugar(job).split(",") if norm(p)]
     for parte in reversed(partes[1:]):  # "Toluca de Lerdo, Méx." -> "mex"
         for nombre, alias in ESTADOS.items():
             if parte in alias:
+                return nombre
+    if partes:  # la ciudad viene solo dentro de la ubicación
+        for nombre, ciudades in CIUDADES.items():
+            if partes[0] in ciudades:
                 return nombre
     if estado == "mexico" and ciudad:  # estado "México" con ciudad: es el Estado de México
         return "Estado de México"
@@ -217,7 +228,7 @@ def liga_limpia(url):
 
 def convertir(job, consulta):
     remoto = es_remoto(job)
-    ubic = job.get("job_location") or ", ".join(x for x in (job.get("job_city"), job.get("job_state")) if x) or None
+    ubic = lugar(job) or ", ".join(x for x in (job.get("job_city"), job.get("job_state")) if x) or None
     return {
         "puesto": (job.get("job_title") or "").strip(),
         "empresa": (job.get("employer_name") or "").strip(),
@@ -306,8 +317,8 @@ def main():
             pais = (job.get("job_country") or "").upper()
             remoto = es_remoto(job)
             if pais not in ("", "MX") or not (remoto or zona(job)):
-                lugar = job.get("job_location") or job.get("job_state") or job.get("job_country") or "sin ubicación"
-                descartadas[lugar] = descartadas.get(lugar, 0) + 1
+                donde = lugar(job) or job.get("job_state") or job.get("job_country") or "sin ubicación"
+                descartadas[donde] = descartadas.get(donde, 0) + 1
                 continue
             en_zona += 1
             nuevas += dedup.agregar(convertir(job, consulta))
