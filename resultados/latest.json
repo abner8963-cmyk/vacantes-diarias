@@ -1,6 +1,6 @@
 {
   "fecha": "2026-11-18",
-  "generado": "2026-11-18T21:33:00-06:00",
+  "generado": "2026-11-18T21:52:57-06:00",
   "pais": "mx",
   "publicadas": "3days",
   "consultas": [
@@ -113,9 +113,63 @@
       "nuevas": 0
     }
   ],
-  "total": 17,
+  "portal_empleo": {
+    "url": "https://www.empleo.gob.mx",
+    "consultado": "2026-11-18T21:52:57-06:00",
+    "publicadas_desde": "2026-11-15",
+    "terminos": [
+      "analista",
+      "contable",
+      "contabilidad",
+      "finanzas",
+      "presupuesto",
+      "auxiliar administrativo"
+    ],
+    "peticiones": 10,
+    "por_estado": [
+      {
+        "estado": "Ciudad de México",
+        "paginas": 5,
+        "revisadas": 250,
+        "recientes": 236,
+        "coinciden": 10
+      },
+      {
+        "estado": "Estado de México",
+        "paginas": 1,
+        "revisadas": 50,
+        "recientes": 33,
+        "coinciden": 1
+      },
+      {
+        "estado": "Hidalgo",
+        "paginas": 1,
+        "revisadas": 50,
+        "recientes": 8,
+        "coinciden": 0
+      },
+      {
+        "estado": "Tlaxcala",
+        "paginas": 1,
+        "revisadas": 50,
+        "recientes": 3,
+        "coinciden": 0
+      },
+      {
+        "estado": "Puebla",
+        "paginas": 1,
+        "revisadas": 50,
+        "recientes": 24,
+        "coinciden": 1
+      }
+    ],
+    "nuevas": 12
+  },
+  "errores": [],
+  "total": 29,
   "sin_especificar": 17,
   "por_portal": {
+    "Portal del Empleo": 12,
     "Glassdoor": 5,
     "Jobrapido.com": 2,
     "LinkedIn": 2,
@@ -463,6 +517,188 @@
       "extracto": "You Matter.mx es la empresa líder en suplementos alimenticios en México, y hoy queremos invitarte a formar parte de nuestra #You Matter Family. Nuestra misión es transformar la salud y el bienestar de las personas a través de productos de la más alta calidad, desarrollados con…",
       "busquedas": [
         "analista de datos financieros"
+      ]
+    },
+    {
+      "puesto": "Analista de Reclutamiento",
+      "empresa": "TECNO AVIV",
+      "ubicacion": "Ecatepec de Morelos, Estado de México",
+      "estado": "Estado de México",
+      "modalidad": "no remoto",
+      "sueldo": "$12,000 al mes",
+      "fecha_publicacion": "2026-11-17",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21267536-ANALISTA-DE-RECLUTAMIENTO",
+      "extracto": "Objetivo del puesto: Atraer, evaluar y seleccionar al talento idóneo para cubrir las vacantes de la organización de forma oportuna. Funciones: Planeación, evluación y selección. Conocimientos: Atraer, evaluar y seleccionar al talento idóneo para cubrir las vacantes de la…",
+      "busquedas": [
+        "analista"
+      ]
+    },
+    {
+      "puesto": "PERSONAL AUXILIAR CONTABLE",
+      "empresa": "ESPERANZA VIVA JOVENES DE MEXICO",
+      "ubicacion": "Juan C. Bonilla, Puebla",
+      "estado": "Puebla",
+      "modalidad": "no remoto",
+      "sueldo": "$9,583 al mes",
+      "fecha_publicacion": "2026-11-18",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21269082-PERSONAL-AUXILIAR-CONTABLE",
+      "extracto": "GARANTIZAR LA TRANSPARENCIA, EL ORDEN FINANCIERO Y EL CUMPLIMIENTO FISCAL DE LA INSTITUCIÓN, ASEGURANDO LA OPTIMIZACIÓN DE LOS RECURSOS DESTINADOS AL BIENESTAR Y CUIDADO DE LOS RESIDENTES DE LA CASA HOGAR.",
+      "busquedas": [
+        "contable"
+      ]
+    },
+    {
+      "puesto": "Auxiliar Contable",
+      "empresa": "Parra y Asociados Contadores Públicos S.C",
+      "ubicacion": "Benito Juárez, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$10,000 – $13,000 al mes",
+      "fecha_publicacion": "2026-11-18",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21262079-AUXILIAR-CONTABLE",
+      "extracto": "Objetivo del puesto: Debe dominar los principios básicos de registro financiero, el manejo de software especializado y el control de documentos comerciales. Funciones: Registro de operaciones diarias, gestión de facturación, contro9l de cuentas por cobrar y pagar, gestión de…",
+      "busquedas": [
+        "contable"
+      ]
+    },
+    {
+      "puesto": "AUXILIAR CONTABLE",
+      "empresa": "APARATOS E INSTRUMENTOS CIENTIFICOS",
+      "ubicacion": "Cuauhtémoc, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$10,500 al mes",
+      "fecha_publicacion": "2026-11-17",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21268182-AUXILIAR-CONTABLE",
+      "extracto": "CONTADOR PUBLICO CON EXPERIENCIA PARA EMPRESA DEDICADA A LA COMERCIALIZACION DE PRODUCTOS MEDICOS Y QUE SEPA EL MANEJO DE POLIZAS INGRESOS, DIARIO, EGRESOS E IMPUESTOS.",
+      "busquedas": [
+        "contable"
+      ]
+    },
+    {
+      "puesto": "PERSONAL AUXILIAR CONTABLE",
+      "empresa": "volkswagen",
+      "ubicacion": "Álvaro Obregón, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$12,000 – $14,000 al mes",
+      "fecha_publicacion": "2026-11-17",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21267858-PERSONAL-AUXILIAR-CONTABLE",
+      "extracto": "Asegurar el correcto registro, control y análisis de las operaciones financieras de la empresa para garantizar la exactitud de los estados financieros y el cumplimiento de las obligaciones fiscales.",
+      "busquedas": [
+        "contable"
+      ]
+    },
+    {
+      "puesto": "PERSONAL ANALISTA CONTABLE",
+      "empresa": "MEXICANA DE BECAS EXCELENCIA",
+      "ubicacion": "Álvaro Obregón, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$12,000 al mes",
+      "fecha_publicacion": "2026-11-17",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21241645-PERSONAL-ANALISTA-CONTABLE",
+      "extracto": "Asegurar el correcto registro, control y análisis de las operaciones financieras de la empresa para garantizar la exactitud de los estados financieros y el cumplimiento de las obligaciones fiscales.",
+      "busquedas": [
+        "analista",
+        "contable"
+      ]
+    },
+    {
+      "puesto": "PERSONA AUXILIAR ADMINISTRATIVO",
+      "empresa": "ADMANSS",
+      "ubicacion": "Iztacalco, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$10,000 al mes",
+      "fecha_publicacion": "2026-11-17",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21267629-PERSONA-AUXILIAR-ADMINISTRATIVO",
+      "extracto": "Se solicita persona responsable, puntual y eficaz con experiencia en la gestión de documentos, control de inventarios, facturación, atención a proveedores y clientes, además de otras tareas administrativas.",
+      "busquedas": [
+        "auxiliar administrativo"
+      ]
+    },
+    {
+      "puesto": "AUXILIAR ADMINISTRATIVO",
+      "empresa": "ADDITIUS INTERNATIONAL SA DE CV",
+      "ubicacion": "Coyoacán, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$12,000 al mes",
+      "fecha_publicacion": "2026-11-17",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21267293-AUXILIAR-ADMINISTRATIVO",
+      "extracto": "ADDITIUS INTERNATIONAL, empresa especializada en la comercialización de ingredientes farmacéuticos, solicita Auxiliar Administrativo para telemarketing y ventas, canales digitales, cobranza, atención a clientes, elaboración y envío de muestra, asistente personal de Dirección…",
+      "busquedas": [
+        "auxiliar administrativo"
+      ]
+    },
+    {
+      "puesto": "****ANALISTA de Impuesto*** auxiliar contable",
+      "empresa": "MEXICANA DE BECAS EXCELENCIA",
+      "ubicacion": "Álvaro Obregón, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$11,000 al mes",
+      "fecha_publicacion": "2026-11-17",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21170904-%2A%2A%2A%2AANALISTA-DE-IMPUESTO%2A%2A%2A-AUXILIAR-CONTABLE",
+      "extracto": "Importante corporativo al sur de la CDMX solicita contador para el puesto de: ****ANALISTA DE IMPUESTOS**** REQUISITOS: Licenciatura en contabilidad (aceptamos pasantes y recién egresados) 6 meses a 1 año de experiencia. Seguimiento y cumplimientos de requerimientos del SAT…",
+      "busquedas": [
+        "analista",
+        "contable"
+      ]
+    },
+    {
+      "puesto": "Asesor de Finanzas",
+      "empresa": "CONSULTORIA ARAGON B.C.H.",
+      "ubicacion": "Venustiano Carranza, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$10,000 – $15,000 al mes",
+      "fecha_publicacion": "2026-11-17",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21061836-ASESOR-DE-FINANZAS",
+      "extracto": "Asesor de Finanzas Sin Experiencia",
+      "busquedas": [
+        "finanzas"
+      ]
+    },
+    {
+      "puesto": "PERSONAL AUXILIAR CONTABLE",
+      "empresa": "Involve RH",
+      "ubicacion": "Cuauhtémoc, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$16,000 al mes",
+      "fecha_publicacion": "2026-11-16",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21252137-PERSONAL-AUXILIAR-CONTABLE",
+      "extracto": "COORDINAR LA PLANIFICACIÓN Y CUMPLIMIENTO DE LAS OBLIGACIONES FISCALES DE LA EMPRESA, DENTRO DE SUS TAREAS SE INCLUYE LA ELABORACIÓN DE ESTRATEGIAS, COORDINACIÓN DE LAS DECLARACIONES DE IMPUESTOS, ANÁLISIS E INTERPRETACIÓN DE DATOS FISCALES.",
+      "busquedas": [
+        "contable"
+      ]
+    },
+    {
+      "puesto": "PROFESIONAL EN CONTABILIDAD",
+      "empresa": "ADDITIUS INTERNATIONAL SA DE CV",
+      "ubicacion": "Coyoacán, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$20,000 al mes",
+      "fecha_publicacion": "2026-11-16",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21267203-PROFESIONAL-EN-CONTABILIDAD",
+      "extracto": "ADDITIUS INTERNATIONAL, empresa especializada en la comercialización de ingredientes farmacéuticos, solicita Profesional en Contabilidad para garantizar la contabilidad y estados financieros, optimizar costos e impuestos, incrementar ingresos y rentabilidad, gestionar cuentas…",
+      "busquedas": [
+        "contabilidad"
       ]
     }
   ]
