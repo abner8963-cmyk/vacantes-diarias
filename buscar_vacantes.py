@@ -54,39 +54,48 @@ def norm(texto):
     return " ".join(t.split())
 
 
-# Nombres y abreviaturas con que Google for Jobs escribe cada estado (ya normalizados).
+SIN_ESPECIFICAR = "sin especificar"
+# Nombres y abreviaturas de cada estado de la zona, ya normalizados (sin acentos, minúsculas, sin puntos).
 ESTADOS = {
-    "Ciudad de México": {"ciudad de mexico", "cdmx", "mexico city", "distrito federal", "df", "d f",
-                         "cd de mexico", "cd mexico", "mexico df", "mexico d f", "ciudad de mexico cdmx"},
-    "Estado de México": {"estado de mexico", "state of mexico", "mexico state", "edo de mexico",
-                         "edo de mex", "edo mex", "edomex", "mex"},
-    "Hidalgo": {"hidalgo", "hgo"},
-    "Tlaxcala": {"tlaxcala", "tlax"},
-    "Puebla": {"puebla", "pue"},
+    "Ciudad de México": {"ciudad de mexico", "cdmx", "cd mx", "mexico city", "mexico city cdmx", "distrito federal",
+                         "df", "d f", "cd de mexico", "cd mexico", "mexico df", "mexico d f", "ciudad de mexico cdmx",
+                         "ciudad de mexico df", "ciudad de mexico d f"},
+    "Estado de México": {"estado de mexico", "state of mexico", "mexico state", "edo de mexico", "edo mexico",
+                         "edo de mex", "edo mex", "edomex", "mex", "estado de mex"},
+    "Hidalgo": {"hidalgo", "hgo", "estado de hidalgo"},
+    "Tlaxcala": {"tlaxcala", "tlax", "estado de tlaxcala"},
+    "Puebla": {"puebla", "pue", "estado de puebla"},
 }
-# Ciudades y alcaldías comunes, para cuando el estado no viene.
+# Los demás estados, para descartar con seguridad «Monterrey, N.L.» o «Jalisco».
+FUERA = {"aguascalientes", "ags", "baja california", "b c", "bc", "baja california sur", "b c s", "bcs",
+         "campeche", "camp", "chiapas", "chis", "chihuahua", "chih", "coahuila", "coahuila de zaragoza", "coah",
+         "colima", "col", "durango", "dgo", "guanajuato", "gto", "guerrero", "gro", "jalisco", "jal",
+         "michoacan", "michoacan de ocampo", "mich", "morelos", "mor", "nayarit", "nay", "nuevo leon", "n l", "nl",
+         "oaxaca", "oax", "queretaro", "queretaro de arteaga", "qro", "quintana roo", "q r", "q roo", "qroo",
+         "san luis potosi", "s l p", "slp", "sinaloa", "sin", "sonora", "son", "tabasco", "tab", "tamaulipas",
+         "tamps", "tamp", "veracruz", "veracruz de ignacio de la llave", "ver", "yucatan", "yuc", "zacatecas", "zac"}
+# Lo que solo dice el país: si no hay nada más, la ubicación queda «sin especificar».
+SOLO_PAIS = {"mexico", "mx", "republica mexicana", "toda la republica", "toda la republica mexicana", "todo mexico"}
+# Ciudades, alcaldías y municipios; se buscan como palabras completas dentro del texto
+# («Toluca de Lerdo» contiene «toluca», «Naucalpan de Juárez» contiene «naucalpan»).
 CIUDADES = {
     "Ciudad de México": {"ciudad de mexico", "cdmx", "mexico city", "alvaro obregon", "azcapotzalco",
-                         "benito juarez", "coyoacan", "cuajimalpa", "cuajimalpa de morelos", "cuauhtemoc",
-                         "gustavo a madero", "iztacalco", "iztapalapa", "magdalena contreras",
-                         "la magdalena contreras", "miguel hidalgo", "milpa alta", "tlahuac", "tlalpan",
+                         "benito juarez", "coyoacan", "cuajimalpa", "cuauhtemoc", "gustavo a madero", "iztacalco",
+                         "iztapalapa", "magdalena contreras", "miguel hidalgo", "milpa alta", "tlahuac", "tlalpan",
                          "venustiano carranza", "xochimilco", "santa fe", "polanco"},
-    "Estado de México": {"toluca", "toluca de lerdo", "naucalpan", "naucalpan de juarez", "tlalnepantla",
-                         "tlalnepantla de baz", "ecatepec", "ecatepec de morelos", "nezahualcoyotl",
-                         "ciudad nezahualcoyotl", "atizapan", "atizapan de zaragoza", "cuautitlan",
-                         "cuautitlan izcalli", "huixquilucan", "interlomas", "metepec", "texcoco",
-                         "tultitlan", "coacalco", "chalco", "ixtapaluca", "nicolas romero", "tecamac",
-                         "zumpango", "lerma", "chimalhuacan", "valle de chalco", "zinacantepec",
-                         "tultepec", "huehuetoca", "tepotzotlan", "ocoyoacac", "san mateo atenco"},
-    "Hidalgo": {"pachuca", "pachuca de soto", "mineral de la reforma", "tulancingo",
-                "tulancingo de bravo", "tula de allende", "tizayuca", "huejutla", "actopan",
-                "ixmiquilpan", "tepeji del rio", "tepeji del rio de ocampo", "ciudad sahagun"},
-    "Tlaxcala": {"tlaxcala", "tlaxcala de xicohtencatl", "apizaco", "huamantla",
-                 "chiautempan", "zacatelco", "tlaxco"},
-    "Puebla": {"puebla", "heroica puebla de zaragoza", "san andres cholula", "san pedro cholula",
-               "cholula", "atlixco", "tehuacan", "san martin texmelucan", "huauchinango", "teziutlan",
+    "Estado de México": {"toluca", "naucalpan", "tlalnepantla", "ecatepec", "texcoco", "nezahualcoyotl", "neza",
+                         "atizapan", "cuautitlan", "cuautitlan izcalli", "huixquilucan", "interlomas", "metepec",
+                         "tultitlan", "coacalco", "chalco", "ixtapaluca", "nicolas romero", "tecamac", "zumpango",
+                         "lerma", "chimalhuacan", "zinacantepec", "tultepec", "huehuetoca", "tepotzotlan",
+                         "ocoyoacac", "san mateo atenco", "chicoloapan", "ciudad satelite", "acolman"},
+    "Hidalgo": {"pachuca", "mineral de la reforma", "tizayuca", "apan", "tulancingo", "tula de allende",
+                "huejutla", "actopan", "ixmiquilpan", "tepeji del rio", "ciudad sahagun", "tepeapulco", "zempoala"},
+    "Tlaxcala": {"tlaxcala", "calpulalpan", "apizaco", "huamantla", "chiautempan", "zacatelco", "tlaxco"},
+    "Puebla": {"puebla", "cholula", "atlixco", "tehuacan", "san martin texmelucan", "huauchinango", "teziutlan",
                "cuautlancingo", "amozoc"},
 }
+# De la más larga a la más corta, para que «cuautitlan izcalli» gane a «cuautitlan».
+_CIUDADES_ORDEN = sorted(((alias, nombre) for nombre, c in CIUDADES.items() for alias in c), key=lambda x: -len(x[0]))
 PALABRAS_REMOTO = ("remoto", "remota", "remote", "home office", "desde casa", "teletrabajo",
                    "anywhere", "cualquier lugar", "trabajo a distancia")
 PERIODOS = {"HOUR": "por hora", "DAY": "al día", "WEEK": "a la semana", "MONTH": "al mes", "YEAR": "al año"}
@@ -116,8 +125,16 @@ def guardar_uso(uso):
     ARCHIVO_USO.write_text(json.dumps(uso, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def ignorar_limite_dia():
+    """Corrida manual con la casilla «ignorar_limite_dia»: solo se respeta el límite del mes."""
+    return os.environ.get("IGNORAR_LIMITE_DIA", "").strip().lower() == "true"
+
+
 def quedan(uso):
-    return max(0, min(LIMITE_DIA - uso["consultas_dia"], LIMITE_MES - uso["consultas_mes"]))
+    mes = LIMITE_MES - uso["consultas_mes"]
+    if ignorar_limite_dia():
+        return max(0, min(len(CONSULTAS), mes))
+    return max(0, min(LIMITE_DIA - uso["consultas_dia"], mes))
 
 
 # ---------- API ----------
@@ -146,10 +163,15 @@ def buscar(consulta, clave):
 
 
 # ---------- Filtros y formato ----------
-def lugar(job):
-    """Ubicación sin el agregado de la API: 'Pachuca de Soto, Hgo.  •  a través de LinkedIn' -> 'Pachuca de Soto, Hgo.'"""
+def lugar_completo(job):
+    """Ubicación tal como la escribe la API, sin el portal: 'México (y 1 ubicación más) • a través de X' -> 'México (y 1 ubicación más)'."""
     t = str(job.get("job_location") or "").split("•")[0]
-    t = re.sub(r"\(y \d+ ubicaci[oó]n(es)? m[aá]s\)", "", t)
+    return " ".join(t.split()).strip(" ,")
+
+
+def lugar(job):
+    """Ubicación para filtrar, sin '(y N ubicaciones más)': 'Pachuca de Soto, Hgo.' ."""
+    t = re.sub(r"\(y \d+ ubicaci[oó]n(es)? m[aá]s\)", "", lugar_completo(job))
     return " ".join(t.split()).strip(" ,")
 
 
@@ -160,27 +182,39 @@ def es_remoto(job):
     return any(norm(p) in texto for p in PALABRAS_REMOTO)
 
 
+def _contiene(texto, alias):
+    return f" {alias} " in f" {texto} "
+
+
 def zona(job):
-    """Devuelve el estado de la zona (CDMX, Edomex, Hidalgo, Tlaxcala, Puebla) o None."""
+    """Devuelve el estado de la zona, SIN_ESPECIFICAR (solo dice «México» o no trae ciudad) o None (fuera de la zona).
+
+    1. Estados: el campo job_state y cada parte de la ubicación, de la última a la primera
+       («Toluca de Lerdo, Méx.» -> «mex»). Un estado de fuera descarta aunque la ciudad se llame igual
+       que una de la zona («Cuauhtémoc, Chih.», «Benito Juárez, Q.R.»).
+    2. Ciudades: el campo job_city y cada parte de la ubicación, buscando la ciudad como palabras completas.
+    3. Si no queda nada más que el país, la ubicación está sin especificar; si trae otra ciudad, está fuera.
+    """
     estado, ciudad = norm(job.get("job_state")), norm(job.get("job_city"))
-    for nombre, alias in ESTADOS.items():
-        if estado in alias:
-            return nombre
-    for nombre, ciudades in CIUDADES.items():
-        if ciudad in ciudades:
-            return nombre
-    partes = [norm(p) for p in lugar(job).split(",") if norm(p)]
-    for parte in reversed(partes[1:]):  # "Toluca de Lerdo, Méx." -> "mex"
+    partes = [norm(p) for p in lugar(job).split(",")]
+    partes = [p for p in partes if p and p not in SOLO_PAIS]
+    for texto in [estado] + partes[::-1]:
+        if not texto or texto in SOLO_PAIS:
+            continue
         for nombre, alias in ESTADOS.items():
-            if parte in alias:
+            if texto in alias:
                 return nombre
-    if partes:  # la ciudad viene solo dentro de la ubicación
-        for nombre, ciudades in CIUDADES.items():
-            if partes[0] in ciudades:
+        if texto in FUERA:
+            return None
+    for texto in [ciudad] + partes:
+        if not texto or texto in SOLO_PAIS:
+            continue
+        for alias, nombre in _CIUDADES_ORDEN:
+            if _contiene(texto, alias):
                 return nombre
-    if estado == "mexico" and ciudad:  # estado "México" con ciudad: es el Estado de México
-        return "Estado de México"
-    return None
+    if partes or (ciudad and ciudad not in SOLO_PAIS):
+        return None
+    return SIN_ESPECIFICAR
 
 
 def sueldo(job):
@@ -228,12 +262,16 @@ def liga_limpia(url):
 
 def convertir(job, consulta):
     remoto = es_remoto(job)
-    ubic = lugar(job) or ", ".join(x for x in (job.get("job_city"), job.get("job_state")) if x) or None
+    estado = zona(job)
+    if estado == SIN_ESPECIFICAR:
+        ubic = SIN_ESPECIFICAR
+    else:
+        ubic = lugar(job) or ", ".join(x for x in (job.get("job_city"), job.get("job_state")) if x) or None
     return {
         "puesto": (job.get("job_title") or "").strip(),
         "empresa": (job.get("employer_name") or "").strip(),
         "ubicacion": ubic,
-        "estado": zona(job),
+        "estado": estado,
         "modalidad": "remoto" if remoto else "no remoto",
         "sueldo": sueldo(job),
         "fecha_publicacion": fecha_publicacion(job),
@@ -265,6 +303,19 @@ class Deduplicador:
         return True
 
 
+def descartada(job):
+    """Lo necesario para revisar por qué se descartó una vacante."""
+    return {
+        "puesto": (job.get("job_title") or "").strip(),
+        "empresa": (job.get("employer_name") or "").strip(),
+        "ubicacion": lugar_completo(job) or None,
+        "ciudad": job.get("job_city"),
+        "estado": job.get("job_state"),
+        "pais": job.get("job_country"),
+        "portal": job.get("job_publisher"),
+    }
+
+
 def resumen_portales(vacantes):
     conteo = {}
     for v in vacantes:
@@ -290,17 +341,27 @@ def main():
     dedup = Deduplicador()
     archivo_dia = CARPETA / f"{dia}.json"
     previo = {}
+    descartadas, vistas = [], set()
+
+    def descartar(d):
+        clave = norm(d["puesto"]) + "|" + norm(d["empresa"]) + "|" + norm(d["ubicacion"])
+        if clave not in vistas:
+            vistas.add(clave)
+            descartadas.append(d)
+
     if archivo_dia.exists():  # segunda ejecución del mismo día: se combinan los resultados
         previo = json.loads(archivo_dia.read_text(encoding="utf-8"))
         for v in previo.get("vacantes", []):
             dedup.agregar(v)
+        for d in previo.get("descartadas_detalle", []):
+            descartar(d)
 
-    detalle, descartadas, codigo = [], {}, 0
+    detalle, codigo = [], 0
     for consulta in CONSULTAS[:disponibles]:
         uso["consultas_dia"] += 1
         uso["consultas_mes"] += 1
         uso["historial"][dia] = uso["historial"].get(dia, 0) + 1
-        guardar_uso(uso)  # se cuenta antes de enviar: el límite nunca se rebasa
+        guardar_uso(uso)  # se cuenta antes de enviar: el límite del mes nunca se rebasa
         try:
             trabajos = buscar(consulta, clave)
         except ErrorClave as e:
@@ -315,21 +376,24 @@ def main():
         en_zona = nuevas = 0
         for job in trabajos:
             pais = (job.get("job_country") or "").upper()
-            remoto = es_remoto(job)
-            if pais not in ("", "MX") or not (remoto or zona(job)):
-                donde = lugar(job) or job.get("job_state") or job.get("job_country") or "sin ubicación"
-                descartadas[donde] = descartadas.get(donde, 0) + 1
+            if not es_remoto(job) and (pais not in ("", "MX") or zona(job) is None):  # las remotas pasan siempre
+                descartar(descartada(job))
                 continue
             en_zona += 1
             nuevas += dedup.agregar(convertir(job, consulta))
         detalle.append({"consulta": consulta, "encontradas": len(trabajos), "en_zona_o_remotas": en_zona, "nuevas": nuevas})
-        print(f"[{consulta}] {len(trabajos)} encontradas, {en_zona} en la zona o remotas, {nuevas} nuevas")
+        print(f"[{consulta}] {len(trabajos)} encontradas, {en_zona} en la zona, remotas o sin especificar, {nuevas} nuevas")
         time.sleep(1)
 
     hechas = [d for d in detalle if "error" not in d]
     if not detalle:
         return codigo
     vacantes = dedup.lista
+    por_ubicacion = {}
+    for d in descartadas:
+        donde = d["ubicacion"] or "sin ubicación"
+        por_ubicacion[donde] = por_ubicacion.get(donde, 0) + 1
+    sin_especificar = sum(v["estado"] == SIN_ESPECIFICAR for v in vacantes)
     salida = {
         "fecha": dia,
         "generado": hoy.isoformat(timespec="seconds"),
@@ -337,8 +401,11 @@ def main():
         "publicadas": PUBLICADAS,
         "consultas": previo.get("consultas", []) + detalle,
         "total": len(vacantes),
+        "sin_especificar": sin_especificar,
         "por_portal": resumen_portales(vacantes),
-        "descartadas_por_ubicacion": dict(sorted(descartadas.items(), key=lambda x: -x[1])),
+        "descartadas": len(descartadas),
+        "descartadas_por_ubicacion": dict(sorted(por_ubicacion.items(), key=lambda x: (-x[1], x[0]))),
+        "descartadas_detalle": descartadas,
         "vacantes": vacantes,
     }
     if hechas:  # si todas fallaron, no se tocan los resultados anteriores
@@ -347,7 +414,8 @@ def main():
         archivo_dia.write_text(texto, encoding="utf-8")
         (CARPETA / "latest.json").write_text(texto, encoding="utf-8")
 
-    resumen = (f"## Vacantes del {dia}\n\n**{len(vacantes)}** vacantes en la zona o remotas · "
+    resumen = (f"## Vacantes del {dia}\n\n**{len(vacantes)}** vacantes en la zona, remotas o sin especificar "
+               f"({sin_especificar} sin especificar) · {len(descartadas)} descartadas por ubicación · "
                f"consultas: {uso['consultas_dia']}/{LIMITE_DIA} hoy, {uso['consultas_mes']}/{LIMITE_MES} este mes\n\n"
                + "\n".join(f"- {p}: {n}" for p, n in salida["por_portal"].items()) + "\n")
     print(resumen)
