@@ -1,14 +1,15 @@
 {
   "mes": "2026-11",
-  "consultas_mes": 36,
-  "dia": "2026-11-20",
+  "consultas_mes": 45,
+  "dia": "2026-11-22",
   "consultas_dia": 9,
   "limite_dia": 9,
   "limite_mes": 190,
   "historial": {
     "2026-11-18": 18,
     "2026-11-19": 9,
-    "2026-11-20": 9
+    "2026-11-20": 9,
+    "2026-11-22": 9
   },
-  "ultima_corrida_ok": "2026-11-20"
+  "ultima_corrida_ok": "2026-11-22"
 }
