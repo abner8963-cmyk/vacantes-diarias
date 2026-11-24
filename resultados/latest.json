@@ -1,26 +1,26 @@
 {
-  "fecha": "2026-11-23",
-  "generado": "2026-11-23T16:17:57-06:00",
+  "fecha": "2026-11-24",
+  "generado": "2026-11-24T14:55:40-06:00",
   "pais": "mx",
   "publicadas": "3days",
   "consultas": [
     {
       "consulta": "analista presupuestal",
-      "encontradas": 1,
-      "en_zona_o_remotas": 1,
-      "nuevas": 1
+      "encontradas": 0,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
     },
     {
       "consulta": "analista financiero jr",
-      "encontradas": 4,
-      "en_zona_o_remotas": 1,
-      "nuevas": 1
+      "encontradas": 3,
+      "en_zona_o_remotas": 2,
+      "nuevas": 2
     },
     {
       "consulta": "auxiliar contable",
       "encontradas": 10,
-      "en_zona_o_remotas": 9,
-      "nuevas": 9
+      "en_zona_o_remotas": 7,
+      "nuevas": 7
     },
     {
       "consulta": "analista contable jr",
@@ -30,19 +30,19 @@
     },
     {
       "consulta": "control presupuestal",
-      "encontradas": 2,
+      "encontradas": 3,
       "en_zona_o_remotas": 1,
-      "nuevas": 0
+      "nuevas": 1
     },
     {
       "consulta": "finanzas públicas",
-      "encontradas": 0,
-      "en_zona_o_remotas": 0,
-      "nuevas": 0
+      "encontradas": 1,
+      "en_zona_o_remotas": 1,
+      "nuevas": 1
     },
     {
       "consulta": "analista de datos financieros",
-      "encontradas": 3,
+      "encontradas": 2,
       "en_zona_o_remotas": 2,
       "nuevas": 2
     },
@@ -54,15 +54,15 @@
     },
     {
       "consulta": "contabilidad gubernamental",
-      "encontradas": 2,
-      "en_zona_o_remotas": 2,
-      "nuevas": 2
+      "encontradas": 0,
+      "en_zona_o_remotas": 0,
+      "nuevas": 0
     }
   ],
   "portal_empleo": {
     "url": "https://www.empleo.gob.mx",
-    "consultado": "2026-11-23T16:17:57-06:00",
-    "publicadas_desde": "2026-11-20",
+    "consultado": "2026-11-24T14:55:40-06:00",
+    "publicadas_desde": "2026-11-21",
     "terminos": [
       "analista",
       "contable",
@@ -71,62 +71,61 @@
       "presupuesto",
       "auxiliar administrativo"
     ],
-    "peticiones": 12,
+    "peticiones": 8,
     "por_estado": [
       {
         "estado": "Ciudad de México",
-        "paginas": 6,
-        "revisadas": 300,
-        "recientes": 261,
+        "paginas": 3,
+        "revisadas": 150,
+        "recientes": 148,
         "coinciden": 6
       },
       {
         "estado": "Estado de México",
-        "paginas": 2,
-        "revisadas": 100,
-        "recientes": 80,
-        "coinciden": 5
+        "paginas": 1,
+        "revisadas": 50,
+        "recientes": 45,
+        "coinciden": 3
       },
       {
         "estado": "Hidalgo",
         "paginas": 1,
         "revisadas": 50,
-        "recientes": 3,
+        "recientes": 7,
         "coinciden": 0
       },
       {
         "estado": "Tlaxcala",
         "paginas": 1,
         "revisadas": 50,
-        "recientes": 13,
+        "recientes": 6,
         "coinciden": 1
       },
       {
         "estado": "Puebla",
         "paginas": 1,
         "revisadas": 50,
-        "recientes": 43,
-        "coinciden": 0
+        "recientes": 27,
+        "coinciden": 2
       }
     ],
     "nuevas": 12
   },
   "errores": [],
-  "total": 29,
-  "sin_especificar": 17,
+  "total": 27,
+  "sin_especificar": 15,
   "por_portal": {
     "Portal del Empleo": 12,
-    "Jobrapido.com": 9,
-    "BeBee": 4,
-    "Glassdoor": 1,
-    "Indeed": 1,
-    "Recruit.net": 1,
-    "Trabajo.org": 1
+    "Jobrapido.com": 8,
+    "Glassdoor": 3,
+    "BeBee": 1,
+    "Bolsa Rosa": 1,
+    "LinkedIn": 1,
+    "Recruit.net": 1
   },
   "descartadas": 6,
   "descartadas_por_ubicacion": {
-    "Aguascalientes, Ags.": 2,
-    "Zacatecas, Zac.": 2,
+    "Zacatecas, Zac.": 4,
     "Jalisco": 1,
     "San Francisco del Refugio, Jal.": 1
   },
@@ -141,31 +140,40 @@
       "portal": "Jooble"
     },
     {
-      "puesto": "Corredor de Bolsa Junior",
-      "empresa": "Placements24",
-      "ubicacion": "Aguascalientes, Ags.",
-      "ciudad": "Aguascalientes",
-      "estado": "Aguascalientes",
-      "pais": "MX",
-      "portal": "JobLeads"
-    },
-    {
-      "puesto": "Corredor de Bolsa Junior — Capacitación y Comisiones",
-      "empresa": "Placements24",
-      "ubicacion": "Aguascalientes, Ags.",
-      "ciudad": "Aguascalientes",
-      "estado": "Aguascalientes",
-      "pais": "MX",
-      "portal": "JobLeads"
-    },
-    {
-      "puesto": "AUXILIAR CONTABLE",
-      "empresa": "Lomelín Bienes Raíces",
+      "puesto": "Aux. Contable",
+      "empresa": "GK",
       "ubicacion": "Zacatecas, Zac.",
-      "ciudad": null,
-      "estado": null,
-      "pais": null,
-      "portal": "BeBee"
+      "ciudad": "Zacatecas",
+      "estado": "Zacatecas",
+      "pais": "MX",
+      "portal": "Indeed"
+    },
+    {
+      "puesto": "Analista contable Sector Automotriz",
+      "empresa": "Grupo Gocar",
+      "ubicacion": "Zacatecas, Zac.",
+      "ciudad": "Zacatecas",
+      "estado": "Zacatecas",
+      "pais": "MX",
+      "portal": "Indeed"
+    },
+    {
+      "puesto": "CONTADOR ADMINISTRATIVO",
+      "empresa": "Dirección Humana y Asociados",
+      "ubicacion": "Zacatecas, Zac.",
+      "ciudad": "Zacatecas",
+      "estado": "Zacatecas",
+      "pais": "MX",
+      "portal": "Indeed"
+    },
+    {
+      "puesto": "Residente de Obra: Gestión de Presupuesto y Proyectos",
+      "empresa": "Quiero Casa",
+      "ubicacion": "Zacatecas, Zac.",
+      "ciudad": "Zacatecas",
+      "estado": "Zacatecas",
+      "pais": "MX",
+      "portal": "JobLeads"
     },
     {
       "puesto": "Jefe De Analisis Y Control Operativo",
@@ -175,32 +183,22 @@
       "estado": "Jalisco",
       "pais": "MX",
       "portal": "WhatJobs"
-    },
-    {
-      "puesto": "Analista Sr. de Planeación Financiera y Datos",
-      "empresa": "Sportium",
-      "ubicacion": "Zacatecas, Zac.",
-      "ciudad": "Zacatecas",
-      "estado": "Zacatecas",
-      "pais": "MX",
-      "portal": "SimplyHired"
     }
   ],
   "vacantes": [
     {
-      "puesto": "Analista de Presupuesto - Hibrido",
-      "empresa": "Aleatica",
+      "puesto": "Analista jr precios de transferencia",
+      "empresa": "HLB Puebla",
       "ubicacion": "sin especificar",
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
-      "fecha_publicacion": "hace 3 días",
-      "portal": "BeBee",
-      "liga": "https://bebee.com/mx/jobs/analista-de-presupuesto-hibrido-aleatica-jilotzing--ss-mx-1s9xy2z",
-      "extracto": "Analista de Presupuesto Ubicación: Autopista Atizapán Atlacomulco / Modalidad híbrida (2 días presenciales por semana) Acerca de la posición Buscamos un profesional que contribuya al control y seguimiento económico de nuestros proyectos de infraestructura, asegurando el…",
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Glassdoor",
+      "liga": "https://www.glassdoor.com.mx/job-listing/jv?jl=1010333614697",
+      "extracto": "En HLB buscamos un Analista Jr. de Precios de Transferencia con interés en desarrollarse profesionalmente en consultoría fiscal y financiera. Actividades principales • Apoyar en la elaboración de estudios de Precios de Transferencia. • Recopilar, organizar y analizar información…",
       "busquedas": [
-        "analista presupuestal",
-        "control presupuestal"
+        "analista financiero jr"
       ]
     },
     {
@@ -210,7 +208,7 @@
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
-      "fecha_publicacion": "hace 2 días",
+      "fecha_publicacion": "hace 3 días",
       "portal": "Jobrapido.com",
       "liga": "https://mx.jobrapido.com/jobpreview/4942872493883916288",
       "extracto": "¡Únete al Equipo Dportenis! ¿Te apasiona el análisis financiero, la precisión y buscas impulsar tu carrera en una empresa líder en retail? ¡En Grupo Dportenis te estamos buscando para sumarte a nuestro equipo como Analista Contable y ser pieza clave en la salud financiera de…",
@@ -226,7 +224,7 @@
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
-      "fecha_publicacion": "hace 22 horas",
+      "fecha_publicacion": "hace 2 días",
       "portal": "Glassdoor",
       "liga": "https://www.glassdoor.com.mx/job-listing/jv?jl=1010333530389",
       "extracto": "Estamos en búsqueda de un Auxiliar Administrativo de Ingresos y Caja, responsable de gestionar y controlar los ingresos diarios, operar el punto de venta y brindar atención de calidad a nuestros clientes. Buscamos una persona organizada, responsable, con habilidades numéricas y…",
@@ -235,31 +233,16 @@
       ]
     },
     {
-      "puesto": "Auxiliar de Auditoría Externa (Recién egresados en Contaduría)",
-      "empresa": "Despacho Contable Fiscal SA",
+      "puesto": "AUXILIAR CONTABLE Y ADMINISTRATIVO (Programa de Jovenes Construyendo el Futuro)",
+      "empresa": "FERRETERIA COVA",
       "ubicacion": "sin especificar",
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
-      "fecha_publicacion": "hace 3 días",
-      "portal": "Indeed",
-      "liga": "https://mx.indeed.com/viewjob?jk=9ef114ccb848e673",
-      "extracto": "Empresa global de servicios profesionales, enfocada en brindar soluciones especializadas a organizaciones de distintas industrias, mediante equipos multidisciplinarios y metodologías orientadas a la calidad, eficiencia y cumplimiento. Objetivo de la posición Formar parte de un…",
-      "busquedas": [
-        "auxiliar contable"
-      ]
-    },
-    {
-      "puesto": "Auxiliar de Contabilidad - Capturista y Mensajero Local",
-      "empresa": "Aviso Oportuno",
-      "ubicacion": "sin especificar",
-      "estado": "sin especificar",
-      "modalidad": "no remoto",
-      "sueldo": null,
-      "fecha_publicacion": "hace 22 horas",
-      "portal": "Jobrapido.com",
-      "liga": "https://mx.jobrapido.com/jobpreview/8681258207810682880",
-      "extracto": "Aviso Oportuno busca Auxiliar de Contabilidad con experiencia, capturista, chofer de camioneta y mensajero que conozca la ciudad. Prestaciones de ley, sin problemas de horario. Presentar solicitud de empleo en Ejido La Candelaria 44, Ejidos San Francisco Culhuace1n, Coyoace1n.…",
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Glassdoor",
+      "liga": "https://www.glassdoor.com.mx/job-listing/jv?jl=1010333518763",
+      "extracto": "Descripción completa del empleo ¿Eres recién egresado(a) de Contabilidad, Administración o carrera afín? Esta es tu oportunidad para iniciar tu carrera profesional con GRUPO FERRECOVA Estamos en busca de aprendices que quieran trabajar con nosotros, mediante el programa de…",
       "busquedas": [
         "auxiliar contable"
       ]
@@ -271,40 +254,10 @@
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
-      "fecha_publicacion": "hace 2 días",
+      "fecha_publicacion": "hace 3 días",
       "portal": "BeBee",
       "liga": "https://bebee.com/mx/jobs/auxiliar-contable-para-sector-retail-lomas-de-chapultepec-filial-de-grupo-gasfar-miguel-hidalgo--ss-mx-6r5n54",
       "extracto": "¿Buscas un empleo estable con prestaciones desde el primer día? ¡Esta oportunidad es para ti! Únete a nuestro equipo de trabajo, colabora para marcas reconocidas en el sector retail. Actividades principales • Realizar conciliaciones bancarias • Apoyo en el registro de…",
-      "busquedas": [
-        "auxiliar contable"
-      ]
-    },
-    {
-      "puesto": "Auxiliar Contable Jr Facturación, XML y Conciliaciones Zona Rosa",
-      "empresa": "Jobbydoo",
-      "ubicacion": "sin especificar",
-      "estado": "sin especificar",
-      "modalidad": "no remoto",
-      "sueldo": null,
-      "fecha_publicacion": "hace 3 días",
-      "portal": "Jobrapido.com",
-      "liga": "https://mx.jobrapido.com/jobpreview/1425229407273877504",
-      "extracto": "Auxiliar Contable Forma RH International busca Auxiliar Contable para importante grupo restaurantero ubicado en Zona Rosa, Cuauhtémoc, Ciudad de México. Sueldo $12,000 a $14,000 netos mensuales (de acuerdo con experiencia). Horario Lunes a viernes de 9:00 a.m. a 6:30 p.m.Sábados…",
-      "busquedas": [
-        "auxiliar contable"
-      ]
-    },
-    {
-      "puesto": "Auxiliar Contable Administrativa",
-      "empresa": "ReclutaPlus",
-      "ubicacion": "sin especificar",
-      "estado": "sin especificar",
-      "modalidad": "no remoto",
-      "sueldo": null,
-      "fecha_publicacion": "hace 2 días",
-      "portal": "Recruit.net",
-      "liga": "https://www.recruit.net/job/auxiliar-contable-administrativa-jobs/30C6C4745EAF14D1",
-      "extracto": "Será responsable de asistir en diversas funciones contables y administrativas, garantizando la precisión y eficiencia en los registros financieros y la gestión de documentos. Responsabilidades Principales: • Registro y control de pólizas contables, abarcando ingresos, egresos y…",
       "busquedas": [
         "auxiliar contable"
       ]
@@ -316,7 +269,7 @@
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
-      "fecha_publicacion": "hace 2 días",
+      "fecha_publicacion": "hace 3 días",
       "portal": "Jobrapido.com",
       "liga": "https://mx.jobrapido.com/jobpreview/419305735353008128",
       "extracto": "Solicitamos: auxiliar por cuentas por pagar • *Requisitos**: Escolaridad: Técnico en contabilidad, contador público titulado o pasante. Experiência: Mínimo de 2 años. Actividades: Revisión de los requisitos fiscales de las facturas. Verificar que la documentación venga completa…",
@@ -325,33 +278,63 @@
       ]
     },
     {
-      "puesto": "Auxiliar Contable - Benito Juárez",
-      "empresa": "ManpowerGroup",
-      "ubicacion": "sin especificar",
-      "estado": "sin especificar",
-      "modalidad": "no remoto",
-      "sueldo": null,
-      "fecha_publicacion": "hace 2 días",
-      "portal": "BeBee",
-      "liga": "https://bebee.com/mx/jobs/auxiliar-contable-benito-juarez-manpowergroup-benito-juarez-ciudad-de-mexico-df--t7xk-963577101",
-      "extracto": "¿Cuentas con experiencia en áreas contables?, ¿Te interesa desarrollarte dentro de una compañía de servicios?... ¡Esta vacanyte es para ti! Auxiliar Contable Requisitos • Estudios: Licenciatura en Contabilidad (titulado) • Experiencia: 1 año en manejo cuentas por cobrar, cuentas…",
-      "busquedas": [
-        "auxiliar contable"
-      ]
-    },
-    {
-      "puesto": "5832 Lic. En Contaduría Sin Experiencia",
-      "empresa": "Asosa Personal",
+      "puesto": "Auxiliar de Contabilidad - Capturista y Mensajero Local",
+      "empresa": "Aviso Oportuno",
       "ubicacion": "sin especificar",
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
       "fecha_publicacion": "hace 2 días",
       "portal": "Jobrapido.com",
-      "liga": "https://mx.jobrapido.com/jobpreview/7452520978422169600",
-      "extracto": "IMPORTANTE EMPRESA LIDER EN SU GIRO SOLICITA: AUXILIAR CONTABLE Escolaridad: Lic. En Contaduría Pública, trunco o recién egresado Manejo de excel Preferentemente sin experiencia o máximo 1 año en el puesto Actividades: Encargado de la captura de las pólizas de ingreso y registro…",
+      "liga": "https://mx.jobrapido.com/jobpreview/8681258207810682880",
+      "extracto": "Aviso Oportuno busca Auxiliar de Contabilidad con experiencia, capturista, chofer de camioneta y mensajero que conozca la ciudad. Prestaciones de ley, sin problemas de horario. Presentar solicitud de empleo en Ejido La Candelaria 44, Ejidos San Francisco Culhuace1n, Coyoace1n.…",
       "busquedas": [
         "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "Auxiliar Contable Administrativa",
+      "empresa": "ReclutaPlus",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 3 días",
+      "portal": "Recruit.net",
+      "liga": "https://www.recruit.net/job/auxiliar-contable-administrativa-jobs/30C6C4745EAF14D1",
+      "extracto": "Será responsable de asistir en diversas funciones contables y administrativas, garantizando la precisión y eficiencia en los registros financieros y la gestión de documentos. Responsabilidades Principales: • Registro y control de pólizas contables, abarcando ingresos, egresos y…",
+      "busquedas": [
+        "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "Auxiliar Contable Administrativo",
+      "empresa": "Administrategia",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 2 días",
+      "portal": "Jobrapido.com",
+      "liga": "https://mx.jobrapido.com/jobpreview/5922521961069543424",
+      "extracto": "Si tienes experiencia en el área contable y administrativa ¡Te estamos buscando! ¿Cuáles son las actividades a realizar? Gestión de facturas, recopilación y organización de documentación Atención a clientes y proveedores Seguimiento de solicitudes, garantizando que la…",
+      "busquedas": [
+        "auxiliar contable"
+      ]
+    },
+    {
+      "puesto": "Analista Contable Jr. | Desarrollo Profesional (Híbrido)",
+      "empresa": "Placements24",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 21 horas",
+      "portal": "Jobrapido.com",
+      "liga": "https://mx.jobrapido.com/jobpreview/6033507764288880640",
+      "extracto": "Placements24 busca un Analista Contable Jr. para unirse al equipo en Oaxaca City con un modelo híbrido de trabajo. Este rol ofrece la oportunidad de apoyar en funciones contables diversas, aprender y crecer dentro de un entorno corporativo estable. Ideal para profesionales que…",
+      "busquedas": [
+        "analista contable jr"
       ]
     },
     {
@@ -361,7 +344,7 @@
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
-      "fecha_publicacion": "hace 2 días",
+      "fecha_publicacion": "hace 3 días",
       "portal": "Jobrapido.com",
       "liga": "https://mx.jobrapido.com/jobpreview/5073849892397383680",
       "extracto": "En Grupo Planeta, somos líderes mundiales al momento de conectar la cultura, el entretenimiento y la formación con las personas. Desde 1949, nos hemos destacado en el mercado por generar una amplia diversidad de contenidos, desarrollados para todo tipo de gustos, necesidades e…",
@@ -370,18 +353,33 @@
       ]
     },
     {
-      "puesto": "Contador Jr. / Analista Contable",
-      "empresa": "Unspecified",
+      "puesto": "Ejec Admon Rrhh",
+      "empresa": "Bolsa Rosa",
+      "ubicacion": "sin especificar",
+      "estado": "sin especificar",
+      "modalidad": "no remoto",
+      "sueldo": null,
+      "fecha_publicacion": "hace 15 horas",
+      "portal": "Bolsa Rosa",
+      "liga": "https://bolsarosa.com/vacantes/279697-es_ES",
+      "extracto": "ID de la solicitud: 279697 Estamos comprometidos en continuar invirtiendo en nuestros empleados/as y ayudarte a continuar desarrollando tu línea de carrera en Scotiabank. ¡Únete a Scotiabank México! Buscamos talento con experiencia en análisis financiero, control presupuestal y…",
+      "busquedas": [
+        "control presupuestal"
+      ]
+    },
+    {
+      "puesto": "Auxiliar Administrativo: Inicio en Finanzas + Capacitación",
+      "empresa": "Compartamos Banco",
       "ubicacion": "sin especificar",
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
       "fecha_publicacion": "hace 3 días",
       "portal": "Jobrapido.com",
-      "liga": "https://mx.jobrapido.com/jobpreview/1936065808073490432",
-      "extracto": "Analista Contable | Pypper ¡En Pypper buscamos tu talento! Somos una empresa comprometida con el desarrollo de las personas y el cumplimiento de objetivos. Te invitamos a formar parte de nuestro equipo como Analista Contable, donde podrás desarrollar tus habilidades y contribuir…",
+      "liga": "https://mx.jobrapido.com/jobpreview/8947297415656898560",
+      "extracto": "Compartamos Banco busca un Auxiliar Administrativo para apoyar en tareas administrativas y atención al cliente. Se requieren Bachillerato General y experiencia en capturas y manejo de expedientes. El puesto es de jornada completa y contrato indefinido. Ofrecen sueldo base de…",
       "busquedas": [
-        "analista contable jr"
+        "finanzas públicas"
       ]
     },
     {
@@ -391,7 +389,7 @@
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
-      "fecha_publicacion": "hace 2 días",
+      "fecha_publicacion": "hace 3 días",
       "portal": "Jobrapido.com",
       "liga": "https://mx.jobrapido.com/jobpreview/1241508710853902336",
       "extracto": "AKONA Search busca un Analista de Datos con enfoque financiero para consolidar y analizar datos operativos, comerciales y financieros de nuestra cartera de hoteles, transformándolos en indicadores y reportes para apoyar la toma de decisiones estratégicas. Responsable de extraer,…",
@@ -400,48 +398,168 @@
       ]
     },
     {
-      "puesto": "Analista Power Bi Y Control Administrativo",
-      "empresa": "The Big Jobsite",
+      "puesto": "Business Operations & Data Analyst",
+      "empresa": "DiDi",
       "ubicacion": "sin especificar",
       "estado": "sin especificar",
       "modalidad": "no remoto",
       "sueldo": null,
-      "fecha_publicacion": "hace 1 día",
-      "portal": "Trabajo.org",
-      "liga": "https://mx.trabajo.org/oferta-5139-95759b918268e41f2f5ff13ab0eb29b1",
-      "extracto": "The Big Jobsite necesita un analista de control administrativo y BI para diseñar dashboards en Power BI para indicadores administrativos y financieros. Trabajará en la creación y gestión de bases de datos para proyectos, compras, inventarios y pagos, asegurando datos confiables…",
+      "fecha_publicacion": "hace 17 horas",
+      "portal": "LinkedIn",
+      "liga": "https://mx.linkedin.com/jobs/view/business-operations-data-analyst-at-didi-4493976473",
+      "extracto": "About The Company DiDi Global Inc. is the world’s leading mobility technology platform. It offers a wide range of app-based services across markets including Asia-Pacific, Latin America and Africa, including ride hailing, taxi hailing, chauffeur, hitch and other forms of shared…",
       "busquedas": [
         "analista de datos financieros"
       ]
     },
     {
-      "puesto": "Consultor Normativo Sénior En Auditoría Gubernamental (México)",
-      "empresa": "Unspecified",
-      "ubicacion": "sin especificar",
-      "estado": "sin especificar",
+      "puesto": "AUXILIAR ADMINISTRATIVO DE CALIDAD EDUCATIVA",
+      "empresa": "UNIREM",
+      "ubicacion": "Iztapalapa, Ciudad de México",
+      "estado": "Ciudad de México",
       "modalidad": "no remoto",
-      "sueldo": null,
-      "fecha_publicacion": "hace 2 días",
-      "portal": "Jobrapido.com",
-      "liga": "https://mx.jobrapido.com/jobpreview/8611722068813152256",
-      "extracto": "Grupo Orsa en Benito Juárez, Ciudad de México, busca un Contador Público titulado con experiencia en auditoría gubernamental y áreas contables o presupuestales a nivel federal. Se valoran conocimientos en normativa de contabilidad gubernamental y CONAC.La posición requiere alta…",
+      "sueldo": "$10,170 al mes",
+      "fecha_publicacion": "2026-11-24",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21270184-AUXILIAR-ADMINISTRATIVO-DE-CALIDAD-EDUCATIVA",
+      "extracto": "EMPRESA EDUCACIONELA EN BUSCA DE LA EXCELENCIA TANTO ESTUDIANTIL COMO PROFESIONAL",
       "busquedas": [
-        "contabilidad gubernamental"
+        "auxiliar administrativo"
       ]
     },
     {
-      "puesto": "DOCENTE PARA MAESTRIA EN CONTABILIDAD GUBERNAMENTAL-MATERIA DESARROLLO ORGANIZACIONAL (VIRTUAL)",
-      "empresa": "UNIVERSIDAD UMERI",
-      "ubicacion": "sin especificar",
-      "estado": "sin especificar",
+      "puesto": "Analista de Mantenimiento Eléctrico",
+      "empresa": "EndemolShine Boomdog",
+      "ubicacion": "Huixquilucan, Estado de México",
+      "estado": "Estado de México",
       "modalidad": "no remoto",
-      "sueldo": null,
-      "fecha_publicacion": "hace 2 días",
-      "portal": "BeBee",
-      "liga": "https://bebee.com/mx/jobs/docente-para-maestria-en-contabilidad-gubernamental-materia-desarrollo-organizacional-virtual-univer--t7xk-964695098",
-      "extracto": "PERFIL DEL DOCENTE Asignatura: Desarrollo Organizacional Clave: MCG-402 Ciclo escolar: Cuarto cuatrimestre 1. Formación académica • Licenciatura en Administración, Administración Pública, Psicología Organizacional, Relaciones Industriales, Gestión Empresarial, Recursos Humanos o…",
+      "sueldo": "$15,000 – $18,000 al mes",
+      "fecha_publicacion": "2026-11-24",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21251229-ANALISTA-DE-MANTENIMIENTO-EL%C3%89CTRICO",
+      "extracto": "Analista de Mantenimiento Eléctrico – EndemolShine Boomdog En EndemolShine Boomdog estamos buscando talento para integrarse a nuestro equipo de mantenimiento, contribuyendo al funcionamiento seguro y eficiente de nuestras instalaciones. Objetivo del puesto: Realizar actividades…",
       "busquedas": [
-        "contabilidad gubernamental"
+        "analista"
+      ]
+    },
+    {
+      "puesto": "AUXILIAR ADMINISTRATIVO",
+      "empresa": "CAFETERIA LA VIGA S.A. de C.V.",
+      "ubicacion": "Atizapán de Zaragoza, Estado de México",
+      "estado": "Estado de México",
+      "modalidad": "no remoto",
+      "sueldo": "$10,000 – $10,500 al mes",
+      "fecha_publicacion": "2026-11-24",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21204834-AUXILIAR-ADMINISTRATIVO",
+      "extracto": "Con experiencia en: • Control de administrativo de documentación de caja chica, cortes de ventas, etc. • Control de Expedientes (integración de documentación) Se ofrece • Salario bruto de: $ 11,280.00 • Vales de Despensa Mensual • Prestaciones de ley Ser responsable, proactivo,…",
+      "busquedas": [
+        "auxiliar administrativo"
+      ]
+    },
+    {
+      "puesto": "AUXILIAR CONTABLE",
+      "empresa": "FORMACRYL DE MEXICO S.A.",
+      "ubicacion": "Tultitlán, Estado de México",
+      "estado": "Estado de México",
+      "modalidad": "no remoto",
+      "sueldo": "$9,583 al mes",
+      "fecha_publicacion": "2026-11-24",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/20561009-AUXILIAR-CONTABLE",
+      "extracto": "AUXILIAR CONTABLE",
+      "busquedas": [
+        "contable"
+      ]
+    },
+    {
+      "puesto": "AUXILIAR ADMINISTRATIVO",
+      "empresa": "LUMISERVICIOS",
+      "ubicacion": "Tenancingo, Tlaxcala",
+      "estado": "Tlaxcala",
+      "modalidad": "no remoto",
+      "sueldo": "$11,000 al mes",
+      "fecha_publicacion": "2026-11-24",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21273476-AUXILIAR-ADMINISTRATIVO",
+      "extracto": "ATENCION AL CLIENTE Y VENTAS: APOYAR AL EQUIPO COMERCIAL EN LA ELABORACION DE COTIZACIONES FORMALES INTEGRACION DE FICHAS TECNICAS DE LUMINARIAS Y SEGUIMIENTO DE PEDIDOS",
+      "busquedas": [
+        "auxiliar administrativo"
+      ]
+    },
+    {
+      "puesto": "AUXILIAR CONTABLE",
+      "empresa": "ATANI",
+      "ubicacion": "Puebla, Puebla",
+      "estado": "Puebla",
+      "modalidad": "no remoto",
+      "sueldo": "$12,000 al mes",
+      "fecha_publicacion": "2026-11-23",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21272266-AUXILIAR-CONTABLE",
+      "extracto": "1. Captura y control de pólizas contables (ingresos, egresos, diario). 2. Validación y emisión de CFDI en plataforma SAT o ERP. 3. Descarga y verificación de XML y PDF de proveedores. Fecha Impresión: 17-11-2026 Hora: 13:43:35 4. Revisión de saldos bancarios y conciliaciones con…",
+      "busquedas": [
+        "contable"
+      ]
+    },
+    {
+      "puesto": "SUPERVISOR CONTABLE",
+      "empresa": "CASTELAN AUDITORES",
+      "ubicacion": "Puebla, Puebla",
+      "estado": "Puebla",
+      "modalidad": "no remoto",
+      "sueldo": "$20,000 al mes",
+      "fecha_publicacion": "2026-11-23",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21272690-SUPERVISOR-CONTABLE",
+      "extracto": "COORDINAR Y SUPERVISAR AL EQUIPO CONTABLE. DISTRIBUIR CARGAS DE TRABAJO Y MONITOREAR AVANCES Y FECHAS DE CUMPLIMIENTO. REVISAR LA CONTABILIDAD DE PERSONAS FÍSICAS Y MORALES. VALIDAR CIERRES MENSUALES, BALANZAS, CONCILIACIONES Y PAPELES DE TRABAJO. REVISAR CÁLCULOS Y…",
+      "busquedas": [
+        "contable"
+      ]
+    },
+    {
+      "puesto": "ANALISTA DE RECLUTAMIENTO Y SELECCIÓN",
+      "empresa": "UNIREM",
+      "ubicacion": "Iztapalapa, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$12,000 al mes",
+      "fecha_publicacion": "2026-11-24",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21270087-ANALISTA-DE-RECLUTAMIENTO-Y-SELECCI%C3%93N",
+      "extracto": "EMPRESA EDUCACIONELA EN BUSCA DE LA EXCELENCIA TANTO ESTUDIANTIL COMO PROFESIONAL",
+      "busquedas": [
+        "analista"
+      ]
+    },
+    {
+      "puesto": "ANALISTA DE DESARROLLO ORGANIZACIONAL",
+      "empresa": "UNIREM",
+      "ubicacion": "Iztapalapa, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$14,000 al mes",
+      "fecha_publicacion": "2026-11-24",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21270195-ANALISTA-DE-DESARROLLO-ORGANIZACIONAL",
+      "extracto": "EMPRESA EDUCACIONELA EN BUSCA DE LA EXCELENCIA TANTO ESTUDIANTIL COMO PROFESIONAL",
+      "busquedas": [
+        "analista"
+      ]
+    },
+    {
+      "puesto": "Analista de Compras indirectas-Delegación Benito Juárez",
+      "empresa": "EVOLUCIONE DE TLAXCALA",
+      "ubicacion": "Benito Juárez, Ciudad de México",
+      "estado": "Ciudad de México",
+      "modalidad": "no remoto",
+      "sueldo": "$21,000 al mes",
+      "fecha_publicacion": "2026-11-23",
+      "portal": "Portal del Empleo",
+      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21272606-ANALISTA-DE-COMPRAS-INDIRECTAS-DELEGACI%C3%93N-BENITO-JU%C3%81REZ",
+      "extracto": "Importante empresa del sector de dispositivos médicos se encuentra en búsqueda de un(a) Analista de Compras para integrarse a su equipo de Finanzas y Operaciones. Vacante Temporal de 6 meses Objetivo del puesto Brindar soporte operativo y administrativo al área de compras…",
+      "busquedas": [
+        "analista"
       ]
     },
     {
@@ -472,156 +590,6 @@
       "extracto": "¡Únete a nuestro equipo de trabajo! Buscamos un Químico Analista Fisicoquímico con experiencia en la industria farmacéutica para incorporarse a un Tercero Autorizado. Requisitos del Perfil Escolaridad: Licenciatura concluidos con Título y Cédula Profesional en QFB, QFI, QF,…",
       "busquedas": [
         "analista"
-      ]
-    },
-    {
-      "puesto": "Auxiliar contable",
-      "empresa": "LLANTISERVICIO NAUCALPAN SA DE CV",
-      "ubicacion": "Naucalpan de Juárez, Estado de México",
-      "estado": "Estado de México",
-      "modalidad": "no remoto",
-      "sueldo": "$10,000 – $13,000 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21115860-AUXILIAR-CONTABLE",
-      "extracto": "Empresa en Naucalpan, solicita personal que viva en zona cercana, para integrarse en el área contable, con licenciatura terminada o trunca, con experiencia en la presentación de las declaraciones provisionales, Integración de saldos, registro de pólizas de ingresos, egresos y…",
-      "busquedas": [
-        "contable"
-      ]
-    },
-    {
-      "puesto": "JEFE DE CONTABILIDAD",
-      "empresa": "GRUPO SABORIO",
-      "ubicacion": "Huamantla, Tlaxcala",
-      "estado": "Tlaxcala",
-      "modalidad": "no remoto",
-      "sueldo": "$15,000 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21271289-JEFE-DE-CONTABILIDAD",
-      "extracto": "* Declaraciones de impuestos de personas fisicas y morales * Emision de estados financieros * Calculo, presentación y pago de impuestos * Aplicación de las Normas de Información Financiera * Cociliaciones bancarias",
-      "busquedas": [
-        "contabilidad"
-      ]
-    },
-    {
-      "puesto": "TECNICO ANALISTA DE MICROBIOLOGIA",
-      "empresa": "BRULUAGSA, S.A. DE C.V.",
-      "ubicacion": "Atlacomulco, Estado de México",
-      "estado": "Estado de México",
-      "modalidad": "no remoto",
-      "sueldo": "$10,000 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21271675-TECNICO-ANALISTA-DE-MICROBIOLOGIA",
-      "extracto": "Se solicita Técnico Analista de Microbiología para realizar análisis microbiológicos de muestras, identificar microorganismos y verificar que los productos y materiales cumplan con los estándares de calidad establecidos",
-      "busquedas": [
-        "analista"
-      ]
-    },
-    {
-      "puesto": "ANALISTA DE NÓMINAS",
-      "empresa": "BRULUAGSA, S.A. DE C.V.",
-      "ubicacion": "Atlacomulco, Estado de México",
-      "estado": "Estado de México",
-      "modalidad": "no remoto",
-      "sueldo": "$10,000 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21271676-ANALISTA-DE-N%C3%93MINAS",
-      "extracto": "Se solicita Analista de Nóminas responsable de calcular, procesar y administrar el pago de salarios de los empleados, asegurando que los pagos se realicen correctamente y en las fechas establecidas.",
-      "busquedas": [
-        "analista"
-      ]
-    },
-    {
-      "puesto": "Analista de almacén",
-      "empresa": "ALTERNAVIDA",
-      "ubicacion": "Lerma, Estado de México",
-      "estado": "Estado de México",
-      "modalidad": "no remoto",
-      "sueldo": "$12,000 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21271356-ANALISTA-DE-ALMAC%C3%89N",
-      "extracto": "Analista de almacén con experiencia en almacenes o CDIS\" Actividades a realizar: ✅ Recolectar y organizar la información para kits documentales. ✅ Revisar y validar los documentos antes de su distribución. ✅ Coordinarse con otras áreas para asegurar los datos e insumos…",
-      "busquedas": [
-        "analista"
-      ]
-    },
-    {
-      "puesto": "AUXILIAR CONTABLE",
-      "empresa": "TAFIME ASESORES S.C.",
-      "ubicacion": "Naucalpan de Juárez, Estado de México",
-      "estado": "Estado de México",
-      "modalidad": "no remoto",
-      "sueldo": "$12,000 – $14,000 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21271631-AUXILIAR-CONTABLE",
-      "extracto": "¡Únete a nuestro equipo! Estamos buscando un Auxiliar Contable Jr. con interés en desarrollar su carrera profesional dentro del área contable, que desee fortalecer sus conocimientos y adquirir experiencia en procesos contables, fiscales y administrativos. Buscamos una persona…",
-      "busquedas": [
-        "contable"
-      ]
-    },
-    {
-      "puesto": "Auxiliar de Administración",
-      "empresa": "Move Electric S.A. de C.V.",
-      "ubicacion": "Milpa Alta, Ciudad de México",
-      "estado": "Ciudad de México",
-      "modalidad": "no remoto",
-      "sueldo": "$9,583 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21271060-AUXILIAR-DE-ADMINISTRACI%C3%93N",
-      "extracto": "Organización y control documental, captura de datos, elaboración de reportes, manejo de archivos físicos y digitales, seguimiento de solicitudes y apoyo en actividades administrativas, gestionar información, registrar y actualizar bases de datos, organizar documentos, atender…",
-      "busquedas": [
-        "auxiliar administrativo"
-      ]
-    },
-    {
-      "puesto": "Analista de Cuentas por Pagar",
-      "empresa": "SUSHI ROLL",
-      "ubicacion": "Benito Juárez, Ciudad de México",
-      "estado": "Ciudad de México",
-      "modalidad": "no remoto",
-      "sueldo": "$12,000 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21271386-ANALISTA-DE-CUENTAS-POR-PAGAR",
-      "extracto": "Asegurar el cumplimiento oportuno y correcto de las obligaciones financieras de la empresa con sus proveedores y acreedores, con el fin de optimizar el flujo de efectivo, mantener relaciones comerciales sólidas y garantizar la deducibilidad fiscal de los gastos.",
-      "busquedas": [
-        "analista"
-      ]
-    },
-    {
-      "puesto": "AUXILIAR CONTABLE",
-      "empresa": "OC CORPORATIVE ENTERPRISES SOLUTIONS SC",
-      "ubicacion": "Cuauhtémoc, Ciudad de México",
-      "estado": "Ciudad de México",
-      "modalidad": "no remoto",
-      "sueldo": "$12,000 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21270972-AUXILIAR-CONTABLE",
-      "extracto": "Auxiliar de contabilidad, conocimientos en contabilidad, presentación de declaraciones, Papeles de trabajo, conocimientos en Contpaq Contabilidad, COI",
-      "busquedas": [
-        "contable"
-      ]
-    },
-    {
-      "puesto": "Auxiliar Administrativo Operaciones Financieras",
-      "empresa": "Grupo Solve",
-      "ubicacion": "Álvaro Obregón, Ciudad de México",
-      "estado": "Ciudad de México",
-      "modalidad": "no remoto",
-      "sueldo": "$15,000 al mes",
-      "fecha_publicacion": "2026-11-20",
-      "portal": "Portal del Empleo",
-      "liga": "https://www.empleo.gob.mx/puesto-de-trabajo/vacante/21271464-AUXILIAR-ADMINISTRATIVO-OPERACIONES-FINANCIERAS",
-      "extracto": "- Indispensable experiencia en instituciones financieras - Empleo presencial en Santa Fe, CDMX - Atención a clientes internos - Registro de información - Control documental - Revisión de contratos - Validación de convenios - Elaboración de reportes y análisis de datos para la…",
-      "busquedas": [
-        "auxiliar administrativo"
       ]
     }
   ]
