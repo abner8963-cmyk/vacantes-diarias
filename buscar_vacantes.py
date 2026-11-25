@@ -43,6 +43,9 @@ RAIZ = Path(__file__).resolve().parent
 ARCHIVO_USO = RAIZ / "uso.json"
 CARPETA = RAIZ / "resultados"
 LARGO_EXTRACTO = 280
+PREFERIDOS = ("LinkedIn", "OCC", "Computrabajo", "Indeed")
+DOMINIOS_PORTALES = {"linkedin.com": "LinkedIn", "occ.com.mx": "OCC",
+                    "computrabajo.com": "Computrabajo", "indeed.com": "Indeed"}
 
 
 def norm(texto):
@@ -254,30 +257,77 @@ def extracto(texto):
 
 
 def liga_limpia(url):
-    if not url:
+    if not isinstance(url, str) or not url.strip():
         return ""
-    p = urllib.parse.urlsplit(url)
+    try:
+        p = urllib.parse.urlsplit(url)
+    except ValueError:
+        return ""
     q = [(k, v) for k, v in urllib.parse.parse_qsl(p.query, keep_blank_values=True) if not k.lower().startswith("utm_")]
     return urllib.parse.urlunsplit((p.scheme, p.netloc.lower(), p.path.rstrip("/"), urllib.parse.urlencode(q), ""))
 
 
 def nombre_portal(publisher):
-    """JSearch (Google for Jobs) también trae vacantes de Computrabajo y OCC; se les pone un nombre fijo."""
+    """JSearch (Google for Jobs) escribe los portales de varias formas; a los preferidos se les pone un nombre fijo."""
     n = norm(publisher)
     if "computrabajo" in n:
         return "Computrabajo"
     if re.search(r"\bocc\b|occmundial", n):
         return "OCC"
+    if _contiene(n, "linkedin"):
+        return "LinkedIn"
+    if _contiene(n, "indeed"):
+        return "Indeed"
     return publisher
 
 
-def convertir(job, consulta):
+def opciones(job):
+    """Portales donde está publicada, como (portal, liga): primero job_publisher y luego apply_options."""
+    fuentes = [(job.get("job_publisher"), job.get("job_apply_link"))]
+    for opcion in job.get("apply_options") or []:
+        if isinstance(opcion, dict):
+            fuentes.append((opcion.get("publisher"), opcion.get("apply_link")))
+    resultado = []
+    for publisher, liga in fuentes:
+        portal = nombre_portal(publisher)
+        if portal not in PREFERIDOS and isinstance(liga, str):
+            try:
+                dominio = urllib.parse.urlsplit(liga).hostname or ""
+            except ValueError:
+                dominio = ""
+            portal = next((p for d, p in DOMINIOS_PORTALES.items()
+                           if dominio == d or dominio.endswith("." + d)), portal)
+        resultado.append((portal, liga))
+    return resultado
+
+
+def prioridad(portal):
+    return PREFERIDOS.index(portal) if portal in PREFERIDOS else len(PREFERIDOS)
+
+
+def otros_portales(principal, portales):
+    vistos = {"", norm(principal)}
+    otros = []
+    for portal in portales:
+        clave = norm(portal)
+        if clave not in vistos:
+            vistos.add(clave)
+            otros.append(portal)
+    return otros
+
+
+def convertir(job, consulta, candidatas=None):
     remoto = es_remoto(job)
     estado = zona(job)
     if estado == SIN_ESPECIFICAR:
         ubic = SIN_ESPECIFICAR
     else:
         ubic = lugar(job) or ", ".join(x for x in (job.get("job_city"), job.get("job_state")) if x) or None
+    if candidatas is None:
+        candidatas = opciones(job)
+    portal, liga = min(((p, l) for p, l in candidatas if p in PREFERIDOS and isinstance(l, str) and l.strip()),
+                       key=lambda opcion: prioridad(opcion[0]),
+                       default=(nombre_portal(job.get("job_publisher")), job.get("job_apply_link")))
     return {
         "puesto": (job.get("job_title") or "").strip(),
         "empresa": (job.get("employer_name") or "").strip(),
@@ -286,8 +336,9 @@ def convertir(job, consulta):
         "modalidad": "remoto" if remoto else "no remoto",
         "sueldo": sueldo(job),
         "fecha_publicacion": fecha_publicacion(job),
-        "portal": nombre_portal(job.get("job_publisher")),
-        "liga": job.get("job_apply_link"),
+        "portal": portal,
+        "liga": liga,
+        "tambien_en": otros_portales(portal, (p for p, _ in candidatas)),
         "extracto": extracto(job.get("job_description")),
         "busquedas": [consulta],
     }
@@ -296,25 +347,49 @@ def convertir(job, consulta):
 class Deduplicador:
     """Mismo puesto y empresa, o misma liga = la misma vacante."""
 
-    def __init__(self):
+    def __init__(self, anterior=False):
         self.lista, self.por_clave = [], {}
+        self.anterior = anterior
 
-    def agregar(self, v):
+    def agregar(self, v, ligas=()):
+        v.setdefault("tambien_en", [])
         claves = []
         if norm(v["puesto"]) and norm(v["empresa"]) not in ("", "confidencial", "empresa confidencial"):
             claves.append("pe:" + norm(v["puesto"]) + "|" + norm(v["empresa"]))
-        if liga_limpia(v["liga"]):
-            claves.append("liga:" + liga_limpia(v["liga"]))
+        for liga in (v["liga"], *ligas):
+            limpia = liga_limpia(liga)
+            if limpia:
+                p = urllib.parse.urlsplit(limpia)
+                if self.anterior or p.path or p.query:
+                    claves.append("liga:" + limpia)
         previa = next((self.por_clave[k] for k in claves if k in self.por_clave), None)
         if previa is not None:
             for b in v["busquedas"]:
                 if b not in previa["busquedas"]:
                     previa["busquedas"].append(b)
+            if not self.anterior:
+                for k in claves:
+                    self.por_clave.setdefault(k, previa)
+                portales = previa["tambien_en"] + [previa["portal"], v["portal"]] + v["tambien_en"]
+                if v["liga"] and prioridad(v["portal"]) < prioridad(previa["portal"]):
+                    previa["portal"], previa["liga"] = v["portal"], v["liga"]
+                previa["tambien_en"] = otros_portales(previa["portal"], portales)
             return False
         for k in claves:
             self.por_clave[k] = v
         self.lista.append(v)
         return True
+
+
+def contar_linkedin(aceptados):
+    anterior, actual = Deduplicador(anterior=True), Deduplicador()
+    for job, consulta in aceptados:
+        candidatas = opciones(job)
+        v = convertir(job, consulta, candidatas)
+        anterior.agregar(dict(v, portal=nombre_portal(job.get("job_publisher")),
+                              liga=job.get("job_apply_link"), busquedas=[consulta]))
+        actual.agregar(v, (liga for _, liga in candidatas))
+    return tuple(sum(v["portal"] == "LinkedIn" for v in d.lista) for d in (anterior, actual))
 
 
 def descartada(job):
@@ -408,6 +483,7 @@ def portal_convertir(item, estado, terminos):
         "fecha_publicacion": portal_fecha(item),
         "portal": PORTAL,
         "liga": portal_liga(item),
+        "tambien_en": [],
         "extracto": extracto(descripcion),
         "busquedas": terminos,
     }
@@ -523,6 +599,7 @@ def main():
             descartar(d)
 
     # ---- JSearch ----
+    aceptados = []
     clave = os.environ.get("JSEARCH_API_KEY", "").strip()
     uso = leer_uso(hoy)
     disponibles = quedan(uso) if clave else 0
@@ -559,7 +636,9 @@ def main():
                 descartar(descartada(job))
                 continue
             en_zona += 1
-            nuevas += dedup.agregar(convertir(job, consulta))
+            aceptados.append((job, consulta))
+            candidatas = opciones(job)
+            nuevas += dedup.agregar(convertir(job, consulta, candidatas), (liga for _, liga in candidatas))
         detalle.append({"consulta": consulta, "encontradas": len(trabajos), "en_zona_o_remotas": en_zona, "nuevas": nuevas})
         print(f"[{consulta}] {len(trabajos)} encontradas, {en_zona} en la zona, remotas o sin especificar, {nuevas} nuevas")
         time.sleep(1)
@@ -609,11 +688,13 @@ def main():
     else:
         print("Ninguna fuente respondió; no se modifican los resultados.")
 
+    linkedin_anterior, linkedin_actual = contar_linkedin(aceptados)
     resumen = (f"## Vacantes del {dia}\n\n**{len(vacantes)}** vacantes en la zona, remotas o sin especificar "
                f"({sin_especificar} sin especificar) · {len(descartadas)} descartadas por ubicación · "
                f"consultas JSearch: {uso['consultas_dia']}/{LIMITE_DIA} hoy, {uso['consultas_mes']}/{LIMITE_MES} este mes · "
                f"{PORTAL}: {nuevas_portal} nuevas en {resumen_portal.get('peticiones', 0)} peticiones\n\n"
                + "\n".join(f"- {p}: {n}" for p, n in salida["por_portal"].items()) + "\n"
+               + f"\nLinkedIn (JSearch): {linkedin_anterior} con job_publisher, {linkedin_actual} con apply_options\n"
                + "".join(f"\n> ⚠️ {e['fuente']}: {e['error']}" for e in errores) + "\n")
     print(resumen)
     if os.environ.get("GITHUB_STEP_SUMMARY"):

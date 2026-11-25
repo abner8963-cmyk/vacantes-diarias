@@ -4,8 +4,8 @@ Busca vacantes de finanzas, contabilidad y presupuesto en México en dos fuentes
 están en Ciudad de México, Estado de México, Hidalgo, Tlaxcala, Puebla, son remotas o no dicen dónde:
 
 1. La API [JSearch de OpenWeb Ninja](https://www.openwebninja.com/api/jsearch), que lee Google for Jobs
-   (LinkedIn, Indeed, Glassdoor, OCC, Computrabajo, etc.). Las que vienen de Computrabajo y OCC Mundial
-   se guardan con `portal` = «Computrabajo» y «OCC».
+   (LinkedIn, Indeed, Glassdoor, OCC, Computrabajo, etc.). LinkedIn, OCC, Computrabajo e Indeed
+   se guardan siempre con ese nombre en `portal`.
 2. El [Portal del Empleo](https://www.empleo.gob.mx) de la STPS (`portal` = «Portal del Empleo»).
 
 ## Filtro de ubicación
@@ -32,8 +32,11 @@ desde **Actions › Buscar vacantes › Run workflow**.
 - `resultados/AAAA-MM-DD.json`: el historial por día.
 
 Cada vacante trae: `puesto`, `empresa`, `ubicacion`, `estado`, `modalidad` (remoto / no remoto),
-`sueldo` (si viene), `fecha_publicacion`, `portal`, `liga` (para postularse), `extracto` y las
-`busquedas` que la encontraron. Se quitan duplicados (mismo puesto y empresa, o misma liga).
+`sueldo` (si viene), `fecha_publicacion`, `portal`, `liga` (para postularse), `tambien_en`
+(otros portales donde aparece, sin repetir), `extracto` y las `busquedas` que la encontraron.
+En JSearch se prefiere la liga de LinkedIn, OCC, Computrabajo o Indeed, en ese orden.
+Se quitan duplicados por puesto y empresa o por cualquier liga de la vacante, excluyendo portadas.
+La consola y el resumen de GitHub comparan el conteo de LinkedIn con y sin las opciones de postulación.
 
 Para revisar el filtro, `descartadas_detalle` trae cada vacante descartada con `puesto`, `empresa`,
 `ubicacion` (el texto completo de la API), `ciudad`, `estado`, `pais` y `portal`.
