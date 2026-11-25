@@ -45,8 +45,8 @@ Para revisar el filtro, `descartadas_detalle` trae cada vacante descartada con `
 
 Una consulta por término, con `country=mx`, `date_posted=3days` y una sola página:
 analista presupuestal · analista financiero jr · auxiliar contable · analista contable jr ·
-control presupuestal · finanzas públicas · analista de datos financieros ·
-recién egresado finanzas · contabilidad gubernamental.
+control presupuestal · profesor finanzas economía · analista de datos financieros ·
+recién egresado finanzas · docente matemáticas.
 
 ## Portal del Empleo
 
