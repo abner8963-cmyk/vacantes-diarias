@@ -29,10 +29,10 @@ CONSULTAS = [
     "auxiliar contable",
     "analista contable jr",
     "control presupuestal",
-    "finanzas públicas",
+    "profesor finanzas economía",
     "analista de datos financieros",
     "recién egresado finanzas",
-    "contabilidad gubernamental",
+    "docente matemáticas",
 ]
 PAIS = "mx"
 PUBLICADAS = "3days"
