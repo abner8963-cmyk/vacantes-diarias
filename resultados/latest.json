@@ -1,6 +1,6 @@
 {
   "fecha": "2026-11-26",
-  "generado": "2026-11-26T01:50:21-06:00",
+  "generado": "2026-11-26T23:15:43-06:00",
   "pais": "mx",
   "publicadas": "3days",
   "consultas": [
@@ -61,7 +61,7 @@
   ],
   "portal_empleo": {
     "url": "https://www.empleo.gob.mx",
-    "consultado": "2026-11-26T01:50:21-06:00",
+    "consultado": "2026-11-26T23:15:43-06:00",
     "publicadas_desde": "2026-11-23",
     "terminos": [
       "analista",
@@ -71,45 +71,45 @@
       "presupuesto",
       "auxiliar administrativo"
     ],
-    "peticiones": 11,
+    "peticiones": 12,
     "por_estado": [
       {
         "estado": "Ciudad de México",
-        "paginas": 5,
-        "revisadas": 250,
-        "recientes": 223,
+        "paginas": 6,
+        "revisadas": 300,
+        "recientes": 265,
         "coinciden": 14
       },
       {
         "estado": "Estado de México",
         "paginas": 2,
         "revisadas": 100,
-        "recientes": 66,
+        "recientes": 68,
         "coinciden": 4
       },
       {
         "estado": "Hidalgo",
         "paginas": 1,
         "revisadas": 50,
-        "recientes": 8,
+        "recientes": 9,
         "coinciden": 1
       },
       {
         "estado": "Tlaxcala",
         "paginas": 1,
         "revisadas": 50,
-        "recientes": 13,
+        "recientes": 20,
         "coinciden": 2
       },
       {
         "estado": "Puebla",
         "paginas": 1,
         "revisadas": 50,
-        "recientes": 35,
+        "recientes": 49,
         "coinciden": 2
       }
     ],
-    "nuevas": 22
+    "nuevas": 0
   },
   "errores": [],
   "total": 40,
